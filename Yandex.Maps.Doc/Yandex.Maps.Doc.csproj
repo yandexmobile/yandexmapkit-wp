@@ -64,11 +64,12 @@
     <Reference Include="System.Windows.Interactivity, Version=3.8.5.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
     <Reference Include="System.Xml" />
     <Reference Include="mscorlib.extensions" />
-    <Reference Include="Yandex.Maps">
-      <HintPath>..\packages\Yandex.Maps.1.0.4507.985\lib\sl4-wp71\Yandex.Maps.dll</HintPath>
+    <Reference Include="Yandex.Maps, Version=1.0.4542.1071, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Yandex.Maps.1.0.4542.1071\lib\sl4-wp71\Yandex.Maps.dll</HintPath>
     </Reference>
-    <Reference Include="Zlib">
-      <HintPath>..\packages\Yandex.Maps.1.0.4507.985\lib\sl4-wp71\Zlib.dll</HintPath>
+    <Reference Include="Zlib, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Yandex.Maps.1.0.4542.1071\lib\sl4-wp71\Zlib.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>

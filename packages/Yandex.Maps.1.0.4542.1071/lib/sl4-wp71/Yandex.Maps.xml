@@ -131,6 +131,13 @@
             </summary>
     </member>
     <member name="P:Yandex.Maps.MapBase.Center"></member>
+    <member name="M:Yandex.Maps.MapBase.CenterOnControl(System.Windows.UIElement)">
+      <summary>
+            Scrolls map to make mapChild appear in center of the viewport.
+            <see cref="F:Yandex.Maps.MapLayer.LocationProperty" /> attached property must be set, otherwise the method couldn't determine control's location and will throw ArgumentOutOfRangeException.
+            Method respects but does not require <see cref="F:Yandex.Maps.MapLayer.AlignmentProperty" /> and <see cref="F:Yandex.Maps.MapLayer.PositionOffsetProperty" />.
+            </summary>
+    </member>
     <member name="F:Yandex.Maps.MapBase.CenterProperty"></member>
     <member name="P:Yandex.Maps.MapBase.ContentPadding">
       <summary>The padding for the content. Is used by <see cref="M:Yandex.Maps.MapBase.EnsureControlIsVisible(System.Windows.UIElement)" /> method.
@@ -162,9 +169,19 @@
             </summary>
       <param name="mapChild">The map control's visual child.</param>
     </member>
-    <member name="P:Yandex.Maps.MapBase.IsDownloading">
-      <summary>
-            Gets a bool indicating whether map data is downloading.
+    <member name="M:Yandex.Maps.MapBase.EnsureRectangleIsVisible(Yandex.Positioning.GeoCoordinatesRect)">
+      <summary>Makes rect visible by scrolling and zooming the map.
+            </summary>
+      <param name="rect">The area on a map.</param>
+    </member>
+    <member name="M:Yandex.Maps.MapBase.EnsureRectangleIsVisible(Yandex.Positioning.RelativeRect)">
+      <summary>Makes rect visible by scrolling and zooming the map.
+            </summary>
+      <param name="rect">The area on a map.</param>
+    </member>
+    <member name="M:Yandex.Maps.MapBase.EnsureVisibility(System.Collections.Generic.IEnumerable{System.Object})">
+      <summary>Makes all mapChildren visible by scrolling and zooming the map.
+            Respects only <see cref="F:Yandex.Maps.MapLayer.LocationProperty" /> which must be set to each child (DependencyObject).
             </summary>
     </member>
     <member name="P:Yandex.Maps.MapBase.OperationStatus"></member>
@@ -226,21 +243,17 @@
     <member name="M:Yandex.Maps.MapLayer.#ctor">
       <summary>Initializes a new instance of the <see cref="T:Yandex.Maps.MapLayer" /> class</summary>
     </member>
-    <member name="M:Yandex.Maps.MapLayer.#ctor(Yandex.Maps.MapBase)">
-      <summary>Initializes a new instance of the <see cref="T:Yandex.Maps.MapLayer" /> class</summary>
-    </member>
     <member name="M:Yandex.Maps.MapLayer.AddChild(System.Windows.UIElement)"></member>
     <member name="M:Yandex.Maps.MapLayer.AddChild(System.Windows.UIElement,Yandex.Positioning.GeoCoordinate)"></member>
     <member name="P:Yandex.Maps.MapLayer.Alignment"></member>
     <member name="F:Yandex.Maps.MapLayer.AlignmentProperty"></member>
     <member name="M:Yandex.Maps.MapLayer.GetAlignment(System.Windows.DependencyObject)"></member>
-    <member name="M:Yandex.Maps.MapLayer.GetChildRect(Yandex.Maps.MapBase,System.Windows.UIElement,Yandex.Positioning.GeoCoordinate,System.Nullable{Yandex.Maps.Alignment},Yandex.Media.Point)"></member>
     <member name="M:Yandex.Maps.MapLayer.GetDependencyPropertyValue``1(System.Windows.DependencyObject,System.Windows.DependencyProperty,System.Windows.DependencyObject@)">
       <summary>Get the value of given desired property from the given control or from the content of that control.
             </summary>
       <param name="dependencyObject">The dependency object to investigate.</param>
       <param name="dependencyProperty">The dependency property to get.</param>
-      <param name="childObject">The optional child object of a given dependencyObject.
+      <param name="childObject">The optional child object of a given <param name="dependencyObject"></param>.
             If it is null then try to determine it as VisualTree child.
             Is used to get rid of repeating VisualTree checks.</param>
       <typeparam name="T">The type of the property.</typeparam>
@@ -261,6 +274,10 @@
       <summary>Get the bounding relative coordinate rectangle for an object.
             </summary>
     </member>
+    <member name="M:Yandex.Maps.MapLayer.GetViewportChildRect(Yandex.Maps.MapBase,System.Windows.UIElement,Yandex.Positioning.GeoCoordinate,System.Nullable{Yandex.Maps.Alignment},Yandex.Media.Point)">
+      <summary>Get child bounding rect in viewport coordinates.
+            </summary>
+    </member>
     <member name="P:Yandex.Maps.MapLayer.Location"></member>
     <member name="F:Yandex.Maps.MapLayer.LocationProperty"></member>
     <member name="P:Yandex.Maps.MapLayer.LocationRectangle"></member>
@@ -275,7 +292,6 @@
             Dependency property for PositionOffset.
             </summary>
     </member>
-    <member name="M:Yandex.Maps.MapLayer.ProjectionUpdated(Yandex.Maps.Controls.ProjectionUpdateLevel)"></member>
     <member name="P:Yandex.Maps.MapLayer.RelativeRectangle"></member>
     <member name="F:Yandex.Maps.MapLayer.RelativeRectangleProperty">
       <summary>Represents the bounding relative coordinates rectangle for an object. 
@@ -294,7 +310,7 @@
             </summary>
     </member>
     <member name="M:Yandex.Maps.MapLayer.SetRelativeRectangle(System.Windows.DependencyObject,Yandex.Positioning.RelativeRect)">
-      <summary>Set the bounding relative coordinate rectangle for an object.
+      <summary>The bounding relative coordinates rectangle for an object.
             </summary>
     </member>
     <member name="T:Yandex.Maps.MapPolyline">
@@ -304,25 +320,41 @@
     <member name="M:Yandex.Maps.MapPolyline.#ctor">
       <summary>Initializes a new instance of the <see cref="T:Yandex.Maps.MapPolyline" /> class</summary>
     </member>
-    <member name="P:Yandex.Maps.MapPolyline.Locations">
-      <summary>The set of shape vertices coordinates. If <see cref="P:Yandex.Maps.MapPolyline.RelativePoints" /> property is specified, this property is ignored.
-            </summary>
-    </member>
-    <member name="F:Yandex.Maps.MapPolyline.LocationsProperty">
-      <summary>The shape vertices coordinates.
-            </summary>
+    <member name="P:Yandex.Maps.MapPolyline.BoundingRect"></member>
+    <member name="M:Yandex.Maps.MapPolyline.Dispose">
+      <summary>Releases all resources used by the <see cref="T:Yandex.Maps.MapPolyline" /></summary>
     </member>
     <member name="M:Yandex.Maps.MapPolyline.OnApplyTemplate"></member>
     <member name="P:Yandex.Maps.MapPolyline.ParentMap"></member>
     <member name="M:Yandex.Maps.MapPolyline.ProjectionUpdated(Yandex.Maps.Controls.ProjectionUpdateLevel)"></member>
-    <member name="P:Yandex.Maps.MapPolyline.RelativePoints">
-      <summary>The set of shape vertices relative points. If this property is specified, the <see cref="P:Yandex.Maps.MapPolyline.Locations" /> property is ignored.
+    <member name="P:Yandex.Maps.MapPolyline.RelativePointsList">
+      <summary>Get / set relative points list.
+            </summary>
+    </member>
+    <member name="F:Yandex.Maps.MapPolyline.RelativePointsListProperty">
+      <summary>List of relative coordinate points.
             </summary>
     </member>
     <member name="P:Yandex.Maps.MapPolyline.Stroke"></member>
+    <member name="P:Yandex.Maps.MapPolyline.StrokeEndLineCap">
+      <summary>Get / set polyline end type.
+            </summary>
+    </member>
+    <member name="F:Yandex.Maps.MapPolyline.StrokeEndLineCapProperty">
+      <summary>Specify polyline end type.
+            </summary>
+    </member>
     <member name="P:Yandex.Maps.MapPolyline.StrokeLineJoin"></member>
     <member name="F:Yandex.Maps.MapPolyline.StrokeLineJoinProperty"></member>
     <member name="F:Yandex.Maps.MapPolyline.StrokeProperty"></member>
+    <member name="P:Yandex.Maps.MapPolyline.StrokeStartLineCap">
+      <summary>Get / set polyline start type.
+            </summary>
+    </member>
+    <member name="F:Yandex.Maps.MapPolyline.StrokeStartLineCapProperty">
+      <summary>Specify polyline start type.
+            </summary>
+    </member>
     <member name="P:Yandex.Maps.MapPolyline.StrokeThickness"></member>
     <member name="F:Yandex.Maps.MapPolyline.StrokeThicknessProperty"></member>
     <member name="T:Yandex.Maps.MapPresenterFactory">
@@ -420,8 +452,8 @@
             VisualStateManager.GoToState hadn't done anything
             </summary>
     </member>
-    <member name="M:Yandex.Maps.PushPin.OnPreviewContentVisibilityChangingByTap"></member>
-    <member name="E:Yandex.Maps.PushPin.PreviewContentVisibilityChangingByTap">
+    <member name="M:Yandex.Maps.PushPin.OnPreviewTap(System.ComponentModel.CancelEventArgs)"></member>
+    <member name="E:Yandex.Maps.PushPin.PreviewTap">
       <summary>
             Indicates pushpin's content visibility will be changed to visible.
             </summary>
@@ -551,6 +583,22 @@
       <summary>The metadata layer.
             </summary>
     </member>
+    <member name="F:Yandex.Maps.API.BaseLayers.vmp2">
+      <summary>Some vector layer.
+            </summary>
+    </member>
+    <member name="F:Yandex.Maps.API.BaseLayers.vlb2">
+      <summary>Some vector layer.
+            </summary>
+    </member>
+    <member name="F:Yandex.Maps.API.BaseLayers.vrds">
+      <summary>Some vector layer.
+            </summary>
+    </member>
+    <member name="F:Yandex.Maps.API.BaseLayers.vpnt">
+      <summary>Some vector layer.
+            </summary>
+    </member>
     <member name="T:Yandex.Maps.Behavior.PushPinBehaviorBase">
       <summary>
             Base class for pushpin behaviors.
@@ -620,7 +668,7 @@
     <member name="M:Yandex.Maps.ContentLayers.MapContentLayer.#ctor">
       <summary>Initializes a new instance of the <see cref="T:Yandex.Maps.ContentLayers.MapContentLayer" /> class</summary>
     </member>
-    <member name="M:Yandex.Maps.ContentLayers.MapContentLayer.#ctor(Yandex.Maps.ContentLayers.Interfaces.ITileZoomLayerBuilder{Yandex.Maps.API.Interfaces.ITile},System.Collections.Generic.IDictionary{System.Byte,Yandex.Maps.ContentLayers.Interfaces.ITileZoomLayer{Yandex.Maps.API.Interfaces.ITile}},Yandex.Threading.Interfaces.IUiDispatcher,Yandex.Maps.API.Interfaces.IZoomLevelConverter,Yandex.Maps.API.Interfaces.IViewportTileConverter,System.Collections.Generic.Queue{Yandex.Maps.Interfaces.ILayerCommand},Yandex.Threading.Interfaces.IThread,Yandex.Maps.Repository.Interfaces.ITileManager{Yandex.Maps.API.Interfaces.ITile},System.Collections.Generic.IDictionary{Yandex.Maps.API.Interfaces.ITileInfo,System.Boolean},Yandex.Maps.ContentLayers.Interfaces.IVisibleTileInfoLayer,Yandex.WebUtils.Interfaces.INetworkInterfaceWrapper)">
+    <member name="M:Yandex.Maps.ContentLayers.MapContentLayer.#ctor(Yandex.Maps.ContentLayers.Interfaces.ITileZoomLayerBuilder{Yandex.Maps.API.Interfaces.ITile},System.Collections.Generic.IDictionary{System.Byte,Yandex.Maps.ContentLayers.Interfaces.ITileZoomLayer{Yandex.Maps.API.Interfaces.ITile}},Yandex.Threading.Interfaces.IUiDispatcher,Yandex.Maps.API.Interfaces.IZoomLevelConverter,Yandex.Maps.API.Interfaces.IViewportTileConverter,System.Collections.Generic.Queue{Yandex.Maps.Interfaces.ILayerCommand},Yandex.Threading.Interfaces.IThread,Yandex.Maps.Repository.Interfaces.ITileManager{Yandex.Maps.API.Interfaces.ITile},System.Collections.Generic.IDictionary{Yandex.Maps.API.Interfaces.ITileInfo,System.Boolean},Yandex.Maps.Config.Interfaces.IConfigMediator,Yandex.WebUtils.Interfaces.INetworkInterfaceWrapper,Yandex.Memory.IMemoryPlanner,Yandex.Collections.Interfaces.IMemoryCache{Yandex.Maps.API.Interfaces.ITileInfo,Yandex.Maps.API.Interfaces.ITile},Yandex.Maps.TileWeighting.ITileWeightCalculator)">
       <summary>Initializes a new instance of the <see cref="T:Yandex.Maps.ContentLayers.MapContentLayer" /> class</summary>
     </member>
     <member name="E:Yandex.Maps.ContentLayers.MapContentLayer.AutoPeoplesMapIsDisplayed">
@@ -666,7 +714,6 @@
             </summary>
     </member>
     <member name="P:Yandex.Maps.ContentLayers.TileContentLayerBase`1.Control"></member>
-    <member name="E:Yandex.Maps.ContentLayers.TileContentLayerBase`1.TilesUnavailable"></member>
     <member name="P:Yandex.Maps.ContentLayers.TileContentLayerBase`1.ZoomLevelsToDisplaySimultaneously">
       <summary>The number of levels to display simultaneously under the current level.
             </summary>
@@ -678,11 +725,12 @@
     <member name="M:Yandex.Maps.ContentLayers.TrafficContentLayer.#ctor">
       <summary>Initializes a new instance of the <see cref="T:Yandex.Maps.ContentLayers.TrafficContentLayer" /> class</summary>
     </member>
-    <member name="M:Yandex.Maps.ContentLayers.TrafficContentLayer.#ctor(Yandex.Maps.ContentLayers.Interfaces.ITrafficTileZoomLayerBuilder,System.Collections.Generic.IDictionary{System.Byte,Yandex.Maps.ContentLayers.Interfaces.ITileZoomLayer{Yandex.Maps.Traffic.Interfaces.IJamTile}},Yandex.Threading.Interfaces.IUiDispatcher,Yandex.Maps.API.Interfaces.IZoomLevelConverter,Yandex.Maps.API.Interfaces.IViewportTileConverter,System.Collections.Generic.Queue{Yandex.Maps.Interfaces.ILayerCommand},Yandex.Threading.Interfaces.IThread,Yandex.Maps.Repository.Interfaces.ITileManager{Yandex.Maps.Traffic.Interfaces.IJamTile},Yandex.Maps.API.Interfaces.IGeoPixelConverter,Yandex.Maps.API.Interfaces.IViewportPointConveter,Yandex.Maps.Config.Interfaces.IConfigMediator,Yandex.Maps.Traffic.Interfaces.IJamManager,Yandex.WebUtils.Interfaces.INetworkInterfaceWrapper)">
+    <member name="M:Yandex.Maps.ContentLayers.TrafficContentLayer.#ctor(Yandex.Maps.ContentLayers.Interfaces.ITrafficTileZoomLayerBuilder,System.Collections.Generic.IDictionary{System.Byte,Yandex.Maps.ContentLayers.Interfaces.ITileZoomLayer{Yandex.Maps.Traffic.Interfaces.IJamTile}},Yandex.Threading.Interfaces.IUiDispatcher,Yandex.Maps.API.Interfaces.IZoomLevelConverter,Yandex.Maps.API.Interfaces.IViewportTileConverter,System.Collections.Generic.Queue{Yandex.Maps.Interfaces.ILayerCommand},Yandex.Threading.Interfaces.IThread,Yandex.Maps.Repository.Interfaces.ITileManager{Yandex.Maps.Traffic.Interfaces.IJamTile},Yandex.Maps.API.Interfaces.IGeoPixelConverter,Yandex.Maps.API.Interfaces.IViewportPointConveter,Yandex.Maps.Config.Interfaces.IConfigMediator,Yandex.Maps.Traffic.Interfaces.IJamManager,Yandex.Maps.PrinterClient.Interfaces.IPrinterManager,Yandex.WebUtils.Interfaces.INetworkInterfaceWrapper,Yandex.Maps.Traffic.Interfaces.IJamRender)">
       <summary>Initializes a new instance of the <see cref="T:Yandex.Maps.ContentLayers.TrafficContentLayer" /> class</summary>
     </member>
     <member name="P:Yandex.Maps.ContentLayers.TrafficContentLayer.Enabled"></member>
     <member name="M:Yandex.Maps.ContentLayers.TrafficContentLayer.OnTrafficValueChanged(Yandex.Maps.Controls.Events.TrafficValueChangedArgs)"></member>
+    <member name="M:Yandex.Maps.ContentLayers.TrafficContentLayer.Reload(Yandex.Maps.API.ViewportRect)"></member>
     <member name="M:Yandex.Maps.ContentLayers.TrafficContentLayer.ResetCachedTileBitmaps"></member>
     <member name="E:Yandex.Maps.ContentLayers.TrafficContentLayer.TrafficValueChanged"></member>
     <member name="T:Yandex.Maps.Controls.Events.CanPinPointByGpsInBusyModeChangedEventArgs"></member>
@@ -795,14 +843,6 @@
       <summary>Initializes a new instance of the <see cref="T:Yandex.Maps.Events.SearchNearbyResultBaloonEventArgs" /> class</summary>
     </member>
     <member name="P:Yandex.Maps.Events.SearchNearbyResultBaloonEventArgs.PointId"></member>
-    <member name="T:Yandex.Maps.Events.TileUnavailableEventArgs">
-      <summary>
-            Arguments of event that tiles of current zoom level are not present on server
-            </summary>
-    </member>
-    <member name="M:Yandex.Maps.Events.TileUnavailableEventArgs.#ctor">
-      <summary>Initializes a new instance of the <see cref="T:Yandex.Maps.Events.TileUnavailableEventArgs" /> class</summary>
-    </member>
     <member name="T:Yandex.Maps.Geocoding.GeocodeRequestParameters">
       <summary>The geocoding parameters.
             </summary>
@@ -856,6 +896,47 @@
       <summary>
             Create new instance of <see cref="T:Yandex.Maps.Geocoding.Interfaces.IGeocodeManager" /></summary>
     </member>
+    <member name="T:Yandex.Maps.Properties.Resources">
+      <summary>
+              A strongly-typed resource class, for looking up localized strings, etc.
+            </summary>
+    </member>
+    <member name="P:Yandex.Maps.Properties.Resources.ApplicationName">
+      <summary>
+              Looks up a localized string similar to Яндекс.Карты.
+            </summary>
+    </member>
+    <member name="P:Yandex.Maps.Properties.Resources.Culture">
+      <summary>
+              Overrides the current thread's CurrentUICulture property for all
+              resource lookups using this strongly typed resource class.
+            </summary>
+    </member>
+    <member name="P:Yandex.Maps.Properties.Resources.DoYouAgreeToIncreaseQuota">
+      <summary>
+              Looks up a localized string similar to Нам требуется больше места для хранения кэша карт. Вы согласны выделить больше места?.
+            </summary>
+    </member>
+    <member name="P:Yandex.Maps.Properties.Resources.NoMapImageResource">
+      <summary>
+              Looks up a localized string similar to /Yandex.Maps;component/Resources/ru-RU/no_map_image.png.
+            </summary>
+    </member>
+    <member name="P:Yandex.Maps.Properties.Resources.ResourceManager">
+      <summary>
+              Returns the cached ResourceManager instance used by this class.
+            </summary>
+    </member>
+    <member name="P:Yandex.Maps.Properties.Resources.YandexLogoImageResource">
+      <summary>
+              Looks up a localized string similar to /Yandex.Maps;component/Resources/ru-RU/yandex_logo.png.
+            </summary>
+    </member>
+    <member name="T:Yandex.Maps.Resources.ResourceWrapper"></member>
+    <member name="M:Yandex.Maps.Resources.ResourceWrapper.#ctor">
+      <summary>Initializes a new instance of the <see cref="T:Yandex.Maps.Resources.ResourceWrapper" /> class</summary>
+    </member>
+    <member name="P:Yandex.Maps.Resources.ResourceWrapper.AppResources"></member>
     <member name="T:Yandex.Positioning.GeoCoordinate">
       <summary>Geo coordinates.
             </summary>
