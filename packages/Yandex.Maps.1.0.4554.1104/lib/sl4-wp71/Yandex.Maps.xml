@@ -398,11 +398,7 @@
       <summary>Initializes a new instance of the <see cref="T:Yandex.Maps.PositionAccuracyControl" /> class</summary>
     </member>
     <member name="M:Yandex.Maps.PositionAccuracyControl.HidePosition"></member>
-    <member name="M:Yandex.Maps.PositionAccuracyControl.InitializeComponent">
-      <summary>
-            InitializeComponent
-            </summary>
-    </member>
+    <member name="M:Yandex.Maps.PositionAccuracyControl.OnApplyTemplate"></member>
     <member name="P:Yandex.Maps.PositionAccuracyControl.ParentMap"></member>
     <member name="M:Yandex.Maps.PositionAccuracyControl.ProjectionUpdated(Yandex.Maps.Controls.ProjectionUpdateLevel)"></member>
     <member name="T:Yandex.Maps.PositionControl">
@@ -416,11 +412,7 @@
       <summary>Initializes a new instance of the <see cref="T:Yandex.Maps.PositionControl" /> class</summary>
     </member>
     <member name="M:Yandex.Maps.PositionControl.HidePosition"></member>
-    <member name="M:Yandex.Maps.PositionControl.InitializeComponent">
-      <summary>
-            InitializeComponent
-            </summary>
-    </member>
+    <member name="M:Yandex.Maps.PositionControl.OnApplyTemplate"></member>
     <member name="T:Yandex.Maps.PushPin">
       <summary>The pushpin container control.
             </summary>
@@ -937,33 +929,20 @@
       <summary>Initializes a new instance of the <see cref="T:Yandex.Maps.Resources.ResourceWrapper" /> class</summary>
     </member>
     <member name="P:Yandex.Maps.Resources.ResourceWrapper.AppResources"></member>
-    <member name="T:Yandex.Positioning.GeoCoordinate">
-      <summary>Geo coordinates.
-            </summary>
-    </member>
+    <member name="T:Yandex.Positioning.GeoCoordinate"></member>
     <member name="M:Yandex.Positioning.GeoCoordinate.#ctor">
-      <summary>Constructor.
-            </summary>
+      <summary>Initializes a new instance of the <see cref="T:Yandex.Positioning.GeoCoordinate" /> class</summary>
     </member>
     <member name="M:Yandex.Positioning.GeoCoordinate.#ctor(System.Double,System.Double)">
       <summary>Initializes a new instance of the <see cref="T:Yandex.Positioning.GeoCoordinate" /> class</summary>
-      <param name="latitude">-90 to 90</param>
-      <param name="longitude">-180 to 180</param>
     </member>
     <member name="M:Yandex.Positioning.GeoCoordinate.#ctor(System.String)">
       <summary>Initializes a new instance of the <see cref="T:Yandex.Positioning.GeoCoordinate" /> class</summary>
-      <param name="value">Coordinates in format: "35.4562234, 64.231123"</param>
     </member>
     <member name="M:Yandex.Positioning.GeoCoordinate.Equals(System.Object)"></member>
     <member name="M:Yandex.Positioning.GeoCoordinate.GetHashCode"></member>
-    <member name="P:Yandex.Positioning.GeoCoordinate.Latitude">
-      <summary>Latitude.
-            </summary>
-    </member>
-    <member name="P:Yandex.Positioning.GeoCoordinate.Longitude">
-      <summary>Longitude.
-            </summary>
-    </member>
+    <member name="P:Yandex.Positioning.GeoCoordinate.Latitude"></member>
+    <member name="P:Yandex.Positioning.GeoCoordinate.Longitude"></member>
     <member name="M:Yandex.Positioning.GeoCoordinate.ToString"></member>
   </members>
 </doc>
