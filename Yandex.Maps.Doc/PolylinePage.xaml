@@ -1,0 +1,66 @@
+﻿<phone:PhoneApplicationPage
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:phone="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone"
+    xmlns:shell="clr-namespace:Microsoft.Phone.Shell;assembly=Microsoft.Phone"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:ymc="clr-namespace:Yandex.Maps;assembly=Yandex.Maps" 
+    xmlns:i="clr-namespace:System.Windows.Interactivity;assembly=System.Windows.Interactivity" 
+    x:Class="Yandex.Maps.Doc.PolylinePage" 
+    FontFamily="{StaticResource PhoneFontFamilyNormal}"
+    FontSize="{StaticResource PhoneFontSizeNormal}"
+    Foreground="{StaticResource PhoneForegroundBrush}"
+    SupportedOrientations="Portrait" Orientation="Portrait"
+    mc:Ignorable="d" d:DesignHeight="768" d:DesignWidth="480"
+    shell:SystemTray.IsVisible="True">
+
+    <shell:SystemTray.ProgressIndicator>
+        <shell:ProgressIndicator x:Name="ProgressIndicator"  IsVisible="True"/>
+    </shell:SystemTray.ProgressIndicator>
+
+    <!--LayoutRoot is the root grid where all page content is placed-->
+    <Grid x:Name="LayoutRoot" Background="Transparent">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <!--TitlePanel contains the name of the application and page title-->
+        <StackPanel x:Name="TitlePanel" Grid.Row="0" Margin="12,17,0,28">
+            <TextBlock x:Name="ApplicationTitle" Text="Yandex.Maps.Doc" Style="{StaticResource PhoneTextNormalStyle}"/>
+            <TextBlock x:Name="PageTitle" Text="Map" Margin="9,-7,0,0" Style="{StaticResource PhoneTextTitle1Style}"/>
+        </StackPanel>
+
+    	<Grid x:Name="ContentPanel" Grid.Row="1" Margin="24,2,24,0" >
+    		<Grid.ColumnDefinitions>
+    			<ColumnDefinition/>
+    			<ColumnDefinition Width="Auto" x:Name="SecondColumn"/>
+    		</Grid.ColumnDefinitions>
+    		<Grid.RowDefinitions>
+    			<RowDefinition Height="Auto"/>
+    			<RowDefinition Height="Auto"/>
+    			<RowDefinition />
+    		</Grid.RowDefinitions>
+    		<TextBlock TextWrapping="Wrap" Text="MapPolyline displays polyline at the map" Grid.ColumnSpan="2" Margin="0,0,0,12"/>
+    		<TextBlock TextWrapping="Wrap" Text="Tap to add points to MapPolyline" Grid.ColumnSpan="2" Margin="0,0,0,24" Grid.Row="1" TextDecorations="Underline" >
+    			<i:Interaction.Triggers>
+    				<i:EventTrigger EventName="Tap">
+    					<i:InvokeCommandAction Command="{Binding AddLocations}"/>
+    				</i:EventTrigger>
+    			</i:Interaction.Triggers>
+    		</TextBlock>
+    		<ymc:Map 
+                Grid.ColumnSpan="2"
+		        ZoomLevel="13"
+		        Center="53.905153, 27.558230"
+                DisplayLayers="map"
+                ApiKey="{StaticResource ApiKey}"
+                Grid.Row="2">
+                <ymc:MapLayer>
+                    <ymc:MapPolyline Locations="{Binding Locations}"/>
+                </ymc:MapLayer>
+            </ymc:Map>
+    	</Grid>
+    </Grid>
+</phone:PhoneApplicationPage>
