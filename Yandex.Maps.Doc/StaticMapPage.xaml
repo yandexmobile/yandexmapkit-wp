@@ -32,13 +32,14 @@
                 <RowDefinition Height="Auto"/>
                 <RowDefinition/>
             </Grid.RowDefinitions>
-            <TextBlock TextWrapping="Wrap" Text="StaticMap это карта, которая не взаимодействует с пользователем"/>
+            <TextBlock TextWrapping="Wrap" Text="StaticMap does not interact with user"/>
         	<ymc:StaticMap
         		x:Name="Map"
         		ZoomLevel="12"
         		Center="53.905153, 27.558230"
         		DisplayLayers="map"
-        		ApiKey="your API key here" Grid.Row="1">
+        		ApiKey="{StaticResource ApiKey}"
+                Grid.Row="1">
         		<ymc:PushPin x:Name="pushPin"
         			Visibility="{Binding Visibility}"
         			ContentVisibility="{Binding ContentVisibility, Mode=TwoWay}"

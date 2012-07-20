@@ -1,25 +1,26 @@
-﻿using System;
-using System.Windows.Input;
-
-namespace Yandex.Maps.Doc
+﻿namespace Yandex.Maps.Doc
 {
     public partial class MainPage
     {
-        // Constructor
         public MainPage()
         {
             InitializeComponent();
-            Map.EnableLocationService = true;
+
+            DataContext = this;
         }
 
-        private void Button1_Tap(object sender, GestureEventArgs e)
+        /// <summary>Use this property for enabling or disabling location service globally for all instances of Yandex.Map.
+        /// </summary>
+        public bool UseLocation
         {
-            NavigationService.Navigate(new Uri("/MapPage.xaml", UriKind.Relative));
-        }
-
-        private void Button2_Tap(object sender, GestureEventArgs e)
-        {
-            NavigationService.Navigate(new Uri("/StaticMapPage.xaml", UriKind.Relative));
+            get
+            {
+                return Map.EnableLocationService;
+            }
+            set
+            {
+                Map.EnableLocationService = value;
+            }
         }
     }
 }

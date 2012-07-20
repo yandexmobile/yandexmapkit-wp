@@ -44,7 +44,7 @@
                 <RowDefinition Height="Auto"/>
                 <RowDefinition />
             </Grid.RowDefinitions>
-            <TextBlock TextWrapping="Wrap" Text="Map это интерактивная карта" Grid.ColumnSpan="2" Margin="0,0,0,12"/>
+            <TextBlock TextWrapping="Wrap" Text="Map is an interactive control" Grid.ColumnSpan="2" Margin="0,0,0,12"/>
             <ymc:Map x:Name="map"
                 Grid.ColumnSpan="2"
 		        ZoomLevel="13"
@@ -53,7 +53,7 @@
 			    TilesStretchFactor="1.5"
                 TrafficEnabled="True"
                 UseLocation="True"
-                ApiKey="your API key here"
+                ApiKey="{StaticResource ApiKey}"
                 OperationStatusChanged="MapOperationStatusChanged"
                 Tap="MapTap"
                 Grid.Row="1">
@@ -68,17 +68,18 @@
                     <Behavior:PushPinZIndexBehavior GroupKey="All"/>
                 </i:Interaction.Behaviors>
                 <ymc:MapLayer>
-                    <!-- любой контрол -->
+                    <!-- any control -->
                     <Rectangle x:Name="LocationObject"
                                Fill="Orange" Width="100" Height="100"
                                ymc:MapLayer.Location="53.895153, 27.581230"
                                ymc:MapLayer.Alignment="Center"/>
                     <Rectangle x:Name="PushpinArea"/>
-                    <ymc:MapPolyline x:Name="RoutePolyline" />
                     <ymc:MapItemsControl x:Name="mapItemsControl">
                         <ymc:MapItemsControl.ItemTemplate>
                             <DataTemplate>
-                                <!-- you can use here any control you like -->
+                                <!-- you can use here any control you like, just set MapLayer.Location and MapLayer.Alignment-->
+
+                                <!-- moreover PushPin is a ContentControl itself -->
                                 <ymc:PushPin
                                     Visibility="{Binding Visibility}"
                                     ContentVisibility="{Binding ContentVisibility, Mode=TwoWay}"
@@ -87,9 +88,11 @@
                                     ymc:MapLayer.Alignment="BottomCenter"
                                     Canvas.ZIndex="{Binding ZIndex}"
                                     CacheMode="BitmapCache"
-                                    Content="Foo Bar!"
                                     ymc:PushPinManagerHelper.GroupKeys="All" 
-                                    />
+                                    >
+                                    
+                                    Foo Bar!
+                                </ymc:PushPin>
                             </DataTemplate>
                         </ymc:MapItemsControl.ItemTemplate>
                 </ymc:MapItemsControl>
@@ -106,7 +109,7 @@
                         <SolidColorBrush Color="{StaticResource PhoneBackgroundColor}"/>
                     </Button.Background>
                 </Button>
-                <Button Content="Я" Tap="Button3Tap">
+                <Button Content="I" Tap="Button3Tap">
                     <Button.Background>
                         <SolidColorBrush Color="{StaticResource PhoneBackgroundColor}"/>
                     </Button.Background>
@@ -115,13 +118,16 @@
                     <Button.Background>
                         <SolidColorBrush Color="{StaticResource PhoneBackgroundColor}"/>
                     </Button.Background>
-                    <TextBlock Text="показать область" TextWrapping="Wrap"></TextBlock>
+                    <TextBlock Text="show rect object" TextWrapping="Wrap"/>
                 </Button>
                 <Button Tap="Button5Tap">
                     <Button.Background>
                         <SolidColorBrush Color="{StaticResource PhoneBackgroundColor}"/>
                     </Button.Background>
-                    <TextBlock Text="показать объект" TextWrapping="Wrap"></TextBlock>
+                    <TextBlock Text="show object" TextWrapping="Wrap"/>
+                </Button>
+                <Button Tap="Button6Tap" Background="{StaticResource PhoneBackgroundBrush}">
+                    <TextBlock Text="show region" TextWrapping="Wrap"/>
                 </Button>
             </StackPanel>
             <TextBlock x:Name="StatusTextBlock" TextWrapping="Wrap" HorizontalAlignment="Right" VerticalAlignment="Bottom" Grid.ColumnSpan="2">

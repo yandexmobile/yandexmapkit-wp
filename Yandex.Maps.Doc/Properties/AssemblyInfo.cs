@@ -9,9 +9,9 @@ using System.Resources;
 [assembly: AssemblyTitle("Yandex.Maps.Doc")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("Yandex")]
+[assembly: AssemblyCompany("Microsoft")]
 [assembly: AssemblyProduct("Yandex.Maps.Doc")]
-[assembly: AssemblyCopyright("Copyright © Yandex 2012")]
+[assembly: AssemblyCopyright("Copyright © Yandex 2011")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 

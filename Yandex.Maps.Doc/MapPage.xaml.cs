@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Diagnostics;
 using System.Globalization;
 using System.Threading;
 using System.Windows;
@@ -91,13 +90,6 @@ namespace Yandex.Maps.Doc
                 map.Dispose();
         }
 
-        /// <summary>Map is scrolled and zoomed to make map rectangle visible.
-        /// </summary>
-        private void Button4Tap(object sender, GestureEventArgs e)
-        {
-            map.EnsureControlIsVisible(PushpinArea);
-        }
-
         /// <summary>Indication of map data load status.
         /// </summary>
         private void MapOperationStatusChanged(object sender, OperationStatusChangedEventArgs e)
@@ -123,11 +115,23 @@ namespace Yandex.Maps.Doc
             map.ContentPadding = new Thickness(24, 24, SecondColumn.ActualWidth + 24, 24);
         }
 
+        /// <summary>Map is scrolled and zoomed to make map rectangle visible.
+        /// </summary>
+        private void Button4Tap(object sender, GestureEventArgs e)
+        {
+            map.EnsureControlIsVisible(PushpinArea);
+        }
+
         /// <summary>Map is scrolled and zoomed to make map object visible.
         /// </summary>
         private void Button5Tap(object sender, GestureEventArgs e)
         {
             map.EnsureControlIsVisible(LocationObject);
+        }
+
+        private void Button6Tap(object sender, GestureEventArgs e)
+        {
+            map.EnsureRectangleIsVisible(new GeoCoordinatesRect(56.385114, 36.577315, 55.033086, 38.807161));
         }
 
         private void MapTap(object sender, GestureEventArgs e)
