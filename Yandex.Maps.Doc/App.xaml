@@ -7,7 +7,7 @@
 
     <!--Application Resources-->
     <Application.Resources>
-        <System:String x:Key="ApiKey">EgwM2FIZ14d5x2HGsLF9qstwhv1nhgAjoLxH-JkfeN0w1qccs6NoBu2NdF4-w~z5YHopiB-rtuFE~d8LnwjU0WPjrsJuM4PBS3zbFhwWLHI=</System:String>
+        <System:String x:Key="ApiKey">Your API key here</System:String>
     </Application.Resources>
 
     <Application.ApplicationLifetimeObjects>
