@@ -49,14 +49,14 @@ namespace Yandex.Maps.Doc
 
         /// <summary>Zoom in to closest integer zoom level.
         /// </summary>
-        private void Button1Tap(object sender, GestureEventArgs e)
+        private void Button1Tap(object sender, EventArgs eventArgs)
         {
             map.ZoomIn();
         }
 
         /// <summary>Zoom out to closest integer zoom level.
         /// </summary>
-        private void Button2Tap(object sender, GestureEventArgs e)
+        private void Button2Tap(object sender, EventArgs eventArgs)
         {
             map.ZoomOut();
         }
@@ -64,7 +64,7 @@ namespace Yandex.Maps.Doc
         /// <summary>Jump to user's location.
         /// </summary>
         /// <remarks>Map's UseLocation property should be true.</remarks>
-        private void Button3Tap(object sender, GestureEventArgs e)
+        private void Button3Tap(object sender, EventArgs eventArgs)
         {
             GeoPositionStatus status = map.JumpToCurrentLocation();
             switch (status)

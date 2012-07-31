@@ -386,10 +386,19 @@
     <member name="P:Yandex.Maps.MapShape.StrokeThickness"></member>
     <member name="F:Yandex.Maps.MapShape.StrokeThicknessProperty"></member>
     <member name="T:Yandex.Maps.MapShapeObservable">
-      <summary>Base map shape with observable source of points.
+      <summary>Base map shape with collection type source of points which can be an INotifyCollectionChanged.
             </summary>
     </member>
-    <member name="M:Yandex.Maps.MapShapeObservable.GetLocations"></member>
+    <member name="M:Yandex.Maps.MapShapeObservable.#ctor">
+      <summary>Ctor.
+            </summary>
+    </member>
+    <member name="M:Yandex.Maps.MapShapeObservable.GetLocations">
+      <summary>Get locations.
+            </summary>
+      <returns>
+        <see cref="P:Yandex.Maps.MapShapeObservable.Locations" /> property value.</returns>
+    </member>
     <member name="P:Yandex.Maps.MapShapeObservable.Locations">
       <summary>The set of shape vertices coordinates.
             </summary>
@@ -398,7 +407,11 @@
       <summary>The shape vertices coordinates.
             </summary>
     </member>
-    <member name="M:Yandex.Maps.MapShapeObservable.SetLocations(System.Collections.ObjectModel.ObservableCollection{Yandex.Positioning.GeoCoordinate})"></member>
+    <member name="M:Yandex.Maps.MapShapeObservable.SetLocations(System.Collections.ObjectModel.Collection{Yandex.Positioning.GeoCoordinate})">
+      <summary>Set locations.
+            </summary>
+      <param name="value">Set <see cref="P:Yandex.Maps.MapShapeObservable.Locations" /> property value.</param>
+    </member>
     <member name="T:Yandex.Maps.OperationStatus">
       <summary>State of an object which may perform performance-critical operations.
             </summary>
@@ -705,6 +718,11 @@
     <member name="M:Yandex.Maps.ContentLayers.MetaContentLayer.#ctor(Yandex.Threading.Interfaces.IUiDispatcher,Yandex.Maps.API.Interfaces.IViewportTileConverter,Yandex.Collections.Interfaces.IQueue{Yandex.Maps.Interfaces.ILayerCommand},Yandex.Threading.Interfaces.IThread,Yandex.Maps.Repository.Interfaces.ITileManager{Yandex.Maps.API.Interfaces.ITile},Yandex.Maps.ContentLayers.Interfaces.IVisibleTileLayer{Yandex.Maps.API.Interfaces.ITile},Yandex.Positioning.Interfaces.IPositionWatcher,Yandex.Maps.API.Interfaces.IGeoPixelConverter)">
       <summary>Initializes a new instance of the <see cref="T:Yandex.Maps.ContentLayers.MetaContentLayer" /> class</summary>
     </member>
+    <member name="P:Yandex.Maps.ContentLayers.MetaContentLayer.AreAllVisibleTilesLoaded">
+      <summary>
+            Determines whether all Visible Files are loaded or not.
+            </summary>
+    </member>
     <member name="M:Yandex.Maps.ContentLayers.MetaContentLayer.GetTileByCoordinates(Yandex.Positioning.GeoCoordinate)"></member>
     <member name="M:Yandex.Maps.ContentLayers.MetaContentLayer.IsRoutingEnabledInCoordinates(Yandex.Positioning.GeoCoordinate)"></member>
     <member name="P:Yandex.Maps.ContentLayers.MetaContentLayer.RouteGuidanceEnabled">
@@ -727,6 +745,16 @@
     </member>
     <member name="P:Yandex.Maps.ContentLayers.MetaContentLayer.TrafficAvailable"></member>
     <member name="E:Yandex.Maps.ContentLayers.MetaContentLayer.TrafficAvailbleChanged"></member>
+    <member name="P:Yandex.Maps.ContentLayers.MetaContentLayer.VisibleTiles">
+      <summary>
+            List of currently visible on screen tiles.
+            </summary>
+    </member>
+    <member name="E:Yandex.Maps.ContentLayers.MetaContentLayer.VisibleTilesChanged">
+      <summary>
+            Detects changes of VisibleTiles list.
+            </summary>
+    </member>
     <member name="T:Yandex.Maps.ContentLayers.TileContentLayerBase`1">
       <summary>The base class for content layers. Does the commands routing to individual layers.
             </summary>
@@ -751,31 +779,6 @@
     <member name="M:Yandex.Maps.ContentLayers.TrafficContentLayer.Reload(Yandex.Maps.API.ViewportRect)"></member>
     <member name="M:Yandex.Maps.ContentLayers.TrafficContentLayer.ResetCachedTileBitmaps"></member>
     <member name="E:Yandex.Maps.ContentLayers.TrafficContentLayer.TrafficValueChanged"></member>
-    <member name="T:Yandex.Maps.Controls.Events.CanPinPointByGpsInBusyModeChangedEventArgs"></member>
-    <member name="M:Yandex.Maps.Controls.Events.CanPinPointByGpsInBusyModeChangedEventArgs.#ctor(System.Boolean)">
-      <summary>Initializes a new instance of the <see cref="T:Yandex.Maps.Controls.Events.CanPinPointByGpsInBusyModeChangedEventArgs" /> class</summary>
-    </member>
-    <member name="P:Yandex.Maps.Controls.Events.CanPinPointByGpsInBusyModeChangedEventArgs.CanPinPointByGpsInBusyMode"></member>
-    <member name="T:Yandex.Maps.Controls.Events.FlickEventArgs"></member>
-    <member name="M:Yandex.Maps.Controls.Events.FlickEventArgs.#ctor(System.Double,System.Double)">
-      <summary>Initializes a new instance of the <see cref="T:Yandex.Maps.Controls.Events.FlickEventArgs" /> class</summary>
-    </member>
-    <member name="P:Yandex.Maps.Controls.Events.FlickEventArgs.HorizontalVelocity"></member>
-    <member name="P:Yandex.Maps.Controls.Events.FlickEventArgs.VerticallVelocity"></member>
-    <member name="T:Yandex.Maps.Controls.Events.PinchDeltaEventArgs"></member>
-    <member name="M:Yandex.Maps.Controls.Events.PinchDeltaEventArgs.#ctor(System.Double,System.Double,System.Double,System.Double)">
-      <summary>Initializes a new instance of the <see cref="T:Yandex.Maps.Controls.Events.PinchDeltaEventArgs" /> class</summary>
-    </member>
-    <member name="P:Yandex.Maps.Controls.Events.PinchDeltaEventArgs.ScaleX"></member>
-    <member name="P:Yandex.Maps.Controls.Events.PinchDeltaEventArgs.ScaleY"></member>
-    <member name="P:Yandex.Maps.Controls.Events.PinchDeltaEventArgs.X">
-      <summary>Pinch center X.
-            </summary>
-    </member>
-    <member name="P:Yandex.Maps.Controls.Events.PinchDeltaEventArgs.Y">
-      <summary>Pinch center Y.
-            </summary>
-    </member>
     <member name="T:Yandex.Maps.Controls.Events.TrafficAvailableChangedArgs"></member>
     <member name="M:Yandex.Maps.Controls.Events.TrafficAvailableChangedArgs.#ctor">
       <summary>Initializes a new instance of the <see cref="T:Yandex.Maps.Controls.Events.TrafficAvailableChangedArgs" /> class</summary>
@@ -786,29 +789,6 @@
       <summary>Initializes a new instance of the <see cref="T:Yandex.Maps.Controls.Events.TrafficValueChangedArgs" /> class</summary>
     </member>
     <member name="P:Yandex.Maps.Controls.Events.TrafficValueChangedArgs.TrafficValue"></member>
-    <member name="T:Yandex.Maps.Controls.Events.ZoomChangedEventArgs"></member>
-    <member name="M:Yandex.Maps.Controls.Events.ZoomChangedEventArgs.#ctor(System.Double)">
-      <summary>Initializes a new instance of the <see cref="T:Yandex.Maps.Controls.Events.ZoomChangedEventArgs" /> class</summary>
-    </member>
-    <member name="P:Yandex.Maps.Controls.Events.ZoomChangedEventArgs.ZoomLevel">
-      <summary>Zoom level.
-            </summary>
-    </member>
-    <member name="T:Yandex.Maps.Controls.Events.ZoomLevelChangedEventArgs">
-      <summary>The zoom level changed event args.
-            </summary>
-    </member>
-    <member name="M:Yandex.Maps.Controls.Events.ZoomLevelChangedEventArgs.#ctor(System.Double,Yandex.Media.Point)">
-      <summary>Initializes a new instance of the <see cref="T:Yandex.Maps.Controls.Events.ZoomLevelChangedEventArgs" /> class</summary>
-    </member>
-    <member name="P:Yandex.Maps.Controls.Events.ZoomLevelChangedEventArgs.ScreenScaleCenter">
-      <summary>The scale center in control coordinates.
-            </summary>
-    </member>
-    <member name="P:Yandex.Maps.Controls.Events.ZoomLevelChangedEventArgs.ZoomLevel">
-      <summary>The new zoom level.
-            </summary>
-    </member>
     <member name="T:Yandex.Maps.Events.GroupKeyArgs"></member>
     <member name="M:Yandex.Maps.Events.GroupKeyArgs.#ctor(System.String)">
       <summary>Initializes a new instance of the <see cref="T:Yandex.Maps.Events.GroupKeyArgs" /> class</summary>
@@ -840,27 +820,15 @@
       <summary>The new zoom level.
             </summary>
     </member>
-    <member name="T:Yandex.Maps.Events.PushpinContentVisibilityChangedEventArgs">
-      <summary>The pushpin content visibility changed event args.
+    <member name="T:Yandex.Maps.Geocoding.GeocodeRequestParameters">
+      <summary>The geocoding parameters.
             </summary>
     </member>
-    <member name="M:Yandex.Maps.Events.PushpinContentVisibilityChangedEventArgs.#ctor(System.Windows.Visibility)">
-      <summary>Initializes a new instance of the <see cref="T:Yandex.Maps.Events.PushpinContentVisibilityChangedEventArgs" /> class</summary>
+    <member name="M:Yandex.Maps.Geocoding.GeocodeRequestParameters.#ctor(Yandex.Positioning.GeoCoordinate,System.Object)">
+      <summary>Initializes a new instance of the <see cref="T:Yandex.Maps.Geocoding.GeocodeRequestParameters" /> class</summary>
     </member>
-    <member name="P:Yandex.Maps.Events.PushpinContentVisibilityChangedEventArgs.ContentVisibility"></member>
-    <member name="T:Yandex.Maps.Events.PushpinStateChangedEventArgs">
-      <summary>The pushpin state changed event args.
-            </summary>
-    </member>
-    <member name="M:Yandex.Maps.Events.PushpinStateChangedEventArgs.#ctor(Yandex.Maps.PushPinState)">
-      <summary>Initializes a new instance of the <see cref="T:Yandex.Maps.Events.PushpinStateChangedEventArgs" /> class</summary>
-    </member>
-    <member name="P:Yandex.Maps.Events.PushpinStateChangedEventArgs.PushPinState"></member>
-    <member name="T:Yandex.Maps.Events.SearchNearbyResultBaloonEventArgs"></member>
-    <member name="M:Yandex.Maps.Events.SearchNearbyResultBaloonEventArgs.#ctor">
-      <summary>Initializes a new instance of the <see cref="T:Yandex.Maps.Events.SearchNearbyResultBaloonEventArgs" /> class</summary>
-    </member>
-    <member name="P:Yandex.Maps.Events.SearchNearbyResultBaloonEventArgs.PointId"></member>
+    <member name="P:Yandex.Maps.Geocoding.GeocodeRequestParameters.GeoCoordinates"></member>
+    <member name="P:Yandex.Maps.Geocoding.GeocodeRequestParameters.State"></member>
     <member name="T:Yandex.Maps.Geocoding.Dto.GeocodeObject"></member>
     <member name="M:Yandex.Maps.Geocoding.Dto.GeocodeObject.#ctor">
       <summary>Initializes a new instance of the <see cref="T:Yandex.Maps.Geocoding.Dto.GeocodeObject" /> class</summary>
@@ -905,61 +873,59 @@
       <summary>
             Create new instance of <see cref="T:Yandex.Maps.Geocoding.Interfaces.IGeocodeManager" /></summary>
     </member>
-    <member name="T:Yandex.Maps.Properties.Resources">
-      <summary>
-              A strongly-typed resource class, for looking up localized strings, etc.
-            </summary>
-    </member>
-    <member name="P:Yandex.Maps.Properties.Resources.ApplicationName">
-      <summary>
-              Looks up a localized string similar to Яндекс.Карты.
-            </summary>
-    </member>
-    <member name="P:Yandex.Maps.Properties.Resources.Culture">
-      <summary>
-              Overrides the current thread's CurrentUICulture property for all
-              resource lookups using this strongly typed resource class.
-            </summary>
-    </member>
-    <member name="P:Yandex.Maps.Properties.Resources.DoYouAgreeToIncreaseQuota">
-      <summary>
-              Looks up a localized string similar to Нам требуется больше места для хранения кэша карт. Вы согласны выделить больше места?.
-            </summary>
-    </member>
-    <member name="P:Yandex.Maps.Properties.Resources.NoMapImageResource">
-      <summary>
-              Looks up a localized string similar to /Yandex.Maps;component/Resources/ru-RU/no_map_image.png.
-            </summary>
-    </member>
-    <member name="P:Yandex.Maps.Properties.Resources.ResourceManager">
-      <summary>
-              Returns the cached ResourceManager instance used by this class.
-            </summary>
-    </member>
-    <member name="P:Yandex.Maps.Properties.Resources.YandexLogoImageResource">
-      <summary>
-              Looks up a localized string similar to /Yandex.Maps;component/Resources/ru-RU/yandex_logo.png.
-            </summary>
-    </member>
     <member name="T:Yandex.Maps.Resources.ResourceWrapper"></member>
     <member name="M:Yandex.Maps.Resources.ResourceWrapper.#ctor">
       <summary>Initializes a new instance of the <see cref="T:Yandex.Maps.Resources.ResourceWrapper" /> class</summary>
     </member>
     <member name="P:Yandex.Maps.Resources.ResourceWrapper.AppResources"></member>
-    <member name="T:Yandex.Positioning.GeoCoordinate"></member>
+    <member name="T:Yandex.Positioning.GeoCoordinate">
+      <summary>Geo coordinates.
+            </summary>
+    </member>
     <member name="M:Yandex.Positioning.GeoCoordinate.#ctor">
-      <summary>Initializes a new instance of the <see cref="T:Yandex.Positioning.GeoCoordinate" /> class</summary>
+      <summary>Constructor.
+            </summary>
     </member>
     <member name="M:Yandex.Positioning.GeoCoordinate.#ctor(System.Double,System.Double)">
       <summary>Initializes a new instance of the <see cref="T:Yandex.Positioning.GeoCoordinate" /> class</summary>
+      <param name="latitude">-90 to 90</param>
+      <param name="longitude">-180 to 180</param>
     </member>
-    <member name="M:Yandex.Positioning.GeoCoordinate.#ctor(System.String)">
+    <member name="M:Yandex.Positioning.GeoCoordinate.#ctor(System.String,System.Boolean)">
       <summary>Initializes a new instance of the <see cref="T:Yandex.Positioning.GeoCoordinate" /> class</summary>
+      <param name="value">Coordinates in format: "35.4562234, 64.231123"</param>
+      <param name="invert">true to invert coordinates order</param>
     </member>
     <member name="M:Yandex.Positioning.GeoCoordinate.Equals(System.Object)"></member>
     <member name="M:Yandex.Positioning.GeoCoordinate.GetHashCode"></member>
-    <member name="P:Yandex.Positioning.GeoCoordinate.Latitude"></member>
-    <member name="P:Yandex.Positioning.GeoCoordinate.Longitude"></member>
+    <member name="P:Yandex.Positioning.GeoCoordinate.Latitude">
+      <summary>Latitude.
+            </summary>
+    </member>
+    <member name="P:Yandex.Positioning.GeoCoordinate.Longitude">
+      <summary>Longitude.
+            </summary>
+    </member>
     <member name="M:Yandex.Positioning.GeoCoordinate.ToString"></member>
+    <member name="T:Yandex.WebUtils.Events.RequestCompletedEventArgs`2"></member>
+    <member name="M:Yandex.WebUtils.Events.RequestCompletedEventArgs`2.#ctor(`0,`1)">
+      <summary>Initializes a new instance of the <see cref="T:Yandex.WebUtils.Events.RequestCompletedEventArgs`2" /> class</summary>
+    </member>
+    <member name="M:Yandex.WebUtils.Events.RequestCompletedEventArgs`2.#ctor(`0,`1,Yandex.WebUtils.CacheValidators)">
+      <summary>Initializes a new instance of the <see cref="T:Yandex.WebUtils.Events.RequestCompletedEventArgs`2" /> class</summary>
+    </member>
+    <member name="P:Yandex.WebUtils.Events.RequestCompletedEventArgs`2.CacheValidators"></member>
+    <member name="P:Yandex.WebUtils.Events.RequestCompletedEventArgs`2.Parameters"></member>
+    <member name="P:Yandex.WebUtils.Events.RequestCompletedEventArgs`2.RequestResults"></member>
+    <member name="T:Yandex.WebUtils.Events.RequestCompletedEventHandler`2"></member>
+    <member name="T:Yandex.WebUtils.Events.RequestFailedEventArgs`1"></member>
+    <member name="M:Yandex.WebUtils.Events.RequestFailedEventArgs`1.#ctor(System.Exception)">
+      <summary>Initializes a new instance of the <see cref="T:Yandex.WebUtils.Events.RequestFailedEventArgs`1" /> class</summary>
+    </member>
+    <member name="M:Yandex.WebUtils.Events.RequestFailedEventArgs`1.#ctor(System.Exception,`0)">
+      <summary>Initializes a new instance of the <see cref="T:Yandex.WebUtils.Events.RequestFailedEventArgs`1" /> class</summary>
+    </member>
+    <member name="P:Yandex.WebUtils.Events.RequestFailedEventArgs`1.Exception"></member>
+    <member name="P:Yandex.WebUtils.Events.RequestFailedEventArgs`1.Parameters"></member>
   </members>
 </doc>

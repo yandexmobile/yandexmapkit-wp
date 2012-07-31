@@ -72,6 +72,7 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\Rx-Silverlight.2.0.20622-rc\lib\SL4-WindowsPhone71\System.Reactive.Windows.Threading.dll</HintPath>
     </Reference>
+    <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Windows" />
     <Reference Include="system" />
     <Reference Include="System.Core" />
@@ -79,13 +80,13 @@
     <Reference Include="System.Windows.Interactivity, Version=3.8.5.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
     <Reference Include="System.Xml" />
     <Reference Include="mscorlib.extensions" />
-    <Reference Include="Yandex.Maps, Version=1.0.4584.1165, Culture=neutral, processorArchitecture=MSIL">
+    <Reference Include="Yandex.Maps, Version=1.0.4595.1196, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\Yandex.Maps.1.0.4584.1165-pre\lib\sl4-wp71\Yandex.Maps.dll</HintPath>
+      <HintPath>..\packages\Yandex.Maps.1.0.4595.1196-pre\lib\sl4-wp71\Yandex.Maps.dll</HintPath>
     </Reference>
     <Reference Include="Zlib, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\Yandex.Maps.1.0.4584.1165-pre\lib\sl4-wp71\Zlib.dll</HintPath>
+      <HintPath>..\packages\Yandex.Maps.1.0.4595.1196-pre\lib\sl4-wp71\Zlib.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
@@ -103,6 +104,9 @@
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="PushpinDummyViewModel.cs" />
+    <Compile Include="SchemaPage.xaml.cs">
+      <DependentUpon>SchemaPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="StaticMapPage.xaml.cs">
       <DependentUpon>StaticMapPage.xaml</DependentUpon>
     </Compile>
@@ -124,6 +128,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
+    <Page Include="SchemaPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="StaticMapPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -141,6 +149,9 @@
     <Content Include="Background.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Content Include="icons\appbar.add.png" />
+    <Content Include="icons\appbar.eye.png" />
+    <Content Include="icons\appbar.minus.png" />
     <Content Include="SplashScreenImage.jpg" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\Silverlight for Phone\$(TargetFrameworkVersion)\Microsoft.Silverlight.$(TargetFrameworkProfile).Overrides.targets" />

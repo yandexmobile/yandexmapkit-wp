@@ -1,0 +1,144 @@
+﻿<phone:PhoneApplicationPage xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" 
+                            xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" 
+                            xmlns:phone="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone" 
+                            xmlns:shell="clr-namespace:Microsoft.Phone.Shell;assembly=Microsoft.Phone" 
+                            xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+                            xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+                            xmlns:Yandex_Maps="clr-namespace:Yandex.Maps;assembly=Yandex.Maps"
+                            xmlns:Positioning="clr-namespace:Yandex.Positioning;assembly=Yandex.Maps"
+                            xmlns:i="clr-namespace:System.Windows.Interactivity;assembly=System.Windows.Interactivity" 
+                            xmlns:Yandex_Maps_Behavior="clr-namespace:Yandex.Maps.Behavior;assembly=Yandex.Maps" 
+                            x:Class="Yandex.Maps.Doc.SchemaPage"
+                            d:DesignWidth="480" d:DesignHeight="696"
+                            mc:Ignorable="d"
+                            SupportedOrientations="PortraitOrLandscape" Orientation="Portrait"
+                            shell:SystemTray.IsVisible="True">
+    <phone:PhoneApplicationPage.Resources>
+        <Style x:Key="MapPolygonStyle1" TargetType="Yandex_Maps:MapPolygon">
+            <Setter Property="Stroke" Value="Red"/>
+            <Setter Property="StrokeThickness" Value="10"/>
+            <Setter Property="StrokeLineJoin" Value="Round"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Yandex_Maps:MapPolygon">
+                        <Polygon x:Name="Shape" Stroke="{TemplateBinding Stroke}" StrokeThickness="{TemplateBinding StrokeThickness}" StrokeLineJoin="{TemplateBinding StrokeLineJoin}" 
+                                 Fill="#FFFFCC00" />
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+        <Style x:Key="MapPolylineStyle1" TargetType="Yandex_Maps:MapPolyline">
+            <Setter Property="Stroke" Value="Red"/>
+            <Setter Property="StrokeThickness" Value="10"/>
+            <Setter Property="StrokeLineJoin" Value="Round"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Yandex_Maps:MapPolyline">
+                        <Polyline x:Name="Shape" Stroke="{TemplateBinding Stroke}" StrokeThickness="{TemplateBinding StrokeThickness}" StrokeLineJoin="{TemplateBinding StrokeLineJoin}" StrokeDashArray="4 1"/>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </phone:PhoneApplicationPage.Resources>
+
+    <phone:PhoneApplicationPage.FontFamily>
+        <StaticResource ResourceKey="PhoneFontFamilyNormal"/>
+    </phone:PhoneApplicationPage.FontFamily>
+    <phone:PhoneApplicationPage.FontSize>
+        <StaticResource ResourceKey="PhoneFontSizeNormal"/>
+    </phone:PhoneApplicationPage.FontSize>
+    <phone:PhoneApplicationPage.Foreground>
+        <StaticResource ResourceKey="PhoneForegroundBrush"/>
+    </phone:PhoneApplicationPage.Foreground>
+
+    <phone:PhoneApplicationPage.ApplicationBar>
+        <shell:ApplicationBar IsVisible="True" IsMenuEnabled="True">
+            <shell:ApplicationBarIconButton IconUri="/icons/appbar.add.png" Text="zoom in" Click="ZoomInClick"/>
+            <shell:ApplicationBarIconButton IconUri="/icons/appbar.minus.png" Text="zoom out" Click="ZoomOutClick"/>
+            <shell:ApplicationBarIconButton IconUri="/icons/appbar.eye.png" Text="show schema" Click="EnsureVisibilityClick"/>
+        </shell:ApplicationBar>
+    </phone:PhoneApplicationPage.ApplicationBar>
+
+    <Grid x:Name="LayoutRoot" Background="Transparent" Margin="0,1,0,-1">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <!--TitlePanel contains the name of the application and page title-->
+        <StackPanel x:Name="TitlePanel" Grid.Row="0" Margin="13,19,-1,26">
+            <TextBlock x:Name="ApplicationTitle" Style="{StaticResource PhoneTextNormalStyle}">
+                <Run Foreground="Red">Y</Run>.SUBBOTNIK
+            </TextBlock>
+            <TextBlock x:Name="PageTitle" Margin="9,-7,0,0" Style="{StaticResource PhoneTextTitle1Style}">
+                our office
+            </TextBlock>
+        </StackPanel>
+
+        <Grid x:Name="ContentPanel" Grid.Row="1" Margin="14,1,10,-1">
+            <Yandex_Maps:Map 
+                ZoomLevel="14"
+                DisplayLayers="pmap"
+                x:Name="map" 
+                ContentPadding="48"
+                ApiKey="{StaticResource ApiKey}" 
+                Margin="12,0,12,24">
+                <i:Interaction.Triggers>
+                    <i:EventTrigger EventName="Tap">
+                        <Yandex_Maps:CollapseAllPushPinsAction/>
+                    </i:EventTrigger>
+                </i:Interaction.Triggers>
+                <i:Interaction.Behaviors>
+                    <Yandex_Maps_Behavior:PushPinContentVisibilityBehavior GroupKey="All" />
+                    <Yandex_Maps_Behavior:PushPinStateBehavior x:Name="PushPinStateBehavior" GroupKey="All" ExcludeFromHandlingGroupKey="Ad" />
+                </i:Interaction.Behaviors>
+                <Yandex_Maps:MapLayer x:Name="schemaLayer">
+                    <Yandex_Maps:MapPolyline Stroke="#FF0072F1" Style="{StaticResource MapPolylineStyle1}">
+                        <Positioning:GeoCoordinate Latitude="55.735045" Longitude="37.593566" />
+                        <Positioning:GeoCoordinate Latitude="55.733514" Longitude="37.592686" />
+                        <Positioning:GeoCoordinate Latitude="55.73418" Longitude="37.59053" />
+                        <Positioning:GeoCoordinate Latitude="55.733919" Longitude="37.589806" />
+                        <Positioning:GeoCoordinate Latitude="55.73424" Longitude="37.589339" />
+                        <Positioning:GeoCoordinate Latitude="55.733659" Longitude="37.588219" />
+                    </Yandex_Maps:MapPolyline>
+                    <Yandex_Maps:MapPolygon StrokeThickness="0" Stroke="Transparent" Opacity="0.6"  Style="{StaticResource MapPolygonStyle1}">
+                        <Positioning:GeoCoordinate Latitude="55.733701" Longitude="37.587238" />
+                        <Positioning:GeoCoordinate Latitude="55.734131" Longitude="37.58815" />
+                        <Positioning:GeoCoordinate Latitude="55.7345" Longitude="37.587667" />
+                        <Positioning:GeoCoordinate Latitude="55.734639" Longitude="37.587951" />
+                        <Positioning:GeoCoordinate Latitude="55.734222" Longitude="37.5886" />
+                        <Positioning:GeoCoordinate Latitude="55.734415" Longitude="37.589003" />
+                        <Positioning:GeoCoordinate Latitude="55.734222" Longitude="37.589266" />
+                        <Positioning:GeoCoordinate Latitude="55.733453" Longitude="37.587629" />
+                    </Yandex_Maps:MapPolygon>
+                    <Yandex_Maps:PushPin Yandex_Maps:MapLayer.Location="55.735093, 37.593123" 
+                                         Yandex_Maps:PushPinManagerHelper.GroupKeys="All" >
+                        <TextBlock FontSize="32" FontFamily="Segoe WP Black" Margin="12"><Run Text="Парк Культуры"/></TextBlock>
+                    </Yandex_Maps:PushPin>
+                    <Yandex_Maps:PushPin
+                                         Yandex_Maps:MapLayer.Location="55.733568, 37.587946" 
+                                         Yandex_Maps:PushPinManagerHelper.GroupKeys="All" >
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition/>
+                                <RowDefinition/>
+                                <RowDefinition/>
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition />
+                                <ColumnDefinition />
+                            </Grid.ColumnDefinitions>
+                            <ItemsControl Grid.Row="0" Grid.ColumnSpan="2">
+                                <ListBoxItem>17:00—17:45 MapKit for WP7</ListBoxItem>
+                                <ListBoxItem>17:45—18:30 Goodbye coffee</ListBoxItem>
+                            </ItemsControl>
+                            <Image Grid.Row="1" Source="twitter-bird-callout.png" Width="35" HorizontalAlignment="Left" Margin="0,3,0,0"/>
+                            <TextBlock Grid.Column="1" Grid.Row="1"  Text="#yasubbotnik" FontSize="32" FontFamily="Segoe WP Black" HorizontalAlignment="Right"/>
+                        </Grid>
+                    </Yandex_Maps:PushPin>
+                </Yandex_Maps:MapLayer>
+            </Yandex_Maps:Map>
+        </Grid>
+    </Grid>
+
+</phone:PhoneApplicationPage>

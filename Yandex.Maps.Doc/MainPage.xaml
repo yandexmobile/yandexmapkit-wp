@@ -10,24 +10,19 @@
     mc:Ignorable="d" d:DesignWidth="480" d:DesignHeight="768"
     SupportedOrientations="Portrait" Orientation="Portrait"
     shell:SystemTray.IsVisible="True">
-	<phone:PhoneApplicationPage.Resources>
-		<DataTemplate x:Key="DataTemplate1">
-			<TextBlock TextWrapping="Wrap" Text="{Binding}" FontSize="27" FontWeight="Bold"/>
-		</DataTemplate>
-	</phone:PhoneApplicationPage.Resources>
 
-	<phone:PhoneApplicationPage.FontFamily>
-		<StaticResource ResourceKey="PhoneFontFamilyNormal"/>
-	</phone:PhoneApplicationPage.FontFamily>
-	<phone:PhoneApplicationPage.FontSize>
-		<StaticResource ResourceKey="PhoneFontSizeNormal"/>
-	</phone:PhoneApplicationPage.FontSize>
-	<phone:PhoneApplicationPage.Foreground>
-		<StaticResource ResourceKey="PhoneForegroundBrush"/>
-	</phone:PhoneApplicationPage.Foreground>
+    <phone:PhoneApplicationPage.FontFamily>
+        <StaticResource ResourceKey="PhoneFontFamilyNormal"/>
+    </phone:PhoneApplicationPage.FontFamily>
+    <phone:PhoneApplicationPage.FontSize>
+        <StaticResource ResourceKey="PhoneFontSizeNormal"/>
+    </phone:PhoneApplicationPage.FontSize>
+    <phone:PhoneApplicationPage.Foreground>
+        <StaticResource ResourceKey="PhoneForegroundBrush"/>
+    </phone:PhoneApplicationPage.Foreground>
 
     <!--LayoutRoot is the root grid where all page content is placed-->
-    <Grid x:Name="LayoutRoot" Background="Transparent">
+    <Grid x:Name="LayoutRoot" Background="Transparent" VerticalAlignment="Stretch">
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="*"/>
@@ -35,38 +30,45 @@
 
         <!--TitlePanel contains the name of the application and page title-->
         <StackPanel x:Name="TitlePanel" Grid.Row="0" Margin="12,17,0,28">
-            <TextBlock x:Name="ApplicationTitle" Text="Yandex.Maps mapkit" Style="{StaticResource PhoneTextNormalStyle}"/>
+            <TextBlock x:Name="ApplicationTitle" Text="YANDEX MAPKIT" Style="{StaticResource PhoneTextNormalStyle}"/>
             <TextBlock x:Name="PageTitle" Text="samples" Margin="9,-7,0,0" Style="{StaticResource PhoneTextTitle1Style}"/>
         </StackPanel>
 
         <!--ContentPanel - place additional content here-->
-		<ScrollViewer Grid.Row="1" Margin="12,0,12,0">
-        <StackPanel x:Name="ContentPanel" >
+        <StackPanel x:Name="ContentPanel" Grid.Row="1" VerticalAlignment="Stretch" Margin="12,0,0,0">
             <CheckBox IsChecked="{Binding UseLocation, Mode=TwoWay}" Content="Use location services" />
             <TextBlock Text="Specify your API Key in App.xaml first" TextWrapping="Wrap" Margin="12"/>
-            <Button Content="View map sample" ContentTemplate="{StaticResource DataTemplate1}" Height="160" >
-            	<i:Interaction.Triggers>
-            		<i:EventTrigger EventName="Tap">
-            			<ec:NavigateToPageAction TargetPage="/MapPage.xaml"/>
-            		</i:EventTrigger>
-            	</i:Interaction.Triggers>
-            </Button>
-            <Button Content="View static map sample" ContentTemplate="{StaticResource DataTemplate1}" Height="160" >
-            	<i:Interaction.Triggers>
-            		<i:EventTrigger EventName="Tap">
-            			<ec:NavigateToPageAction TargetPage="/StaticMapPage.xaml"/>
-            		</i:EventTrigger>
-            	</i:Interaction.Triggers>
-            </Button>
-            <Button Content="View polyline sample" ContentTemplate="{StaticResource DataTemplate1}" Height="160" >
-            	<i:Interaction.Triggers>
-            		<i:EventTrigger EventName="Tap">
-            			<ec:NavigateToPageAction TargetPage="/PolylinePage.xaml"/>
-            		</i:EventTrigger>
-            	</i:Interaction.Triggers>
-            </Button>
+            <ItemsControl Margin="12,0,12,0" VerticalAlignment="Stretch" FontSize="{StaticResource PhoneFontSizeLarge}">
+                <ListBoxItem Content="Map sample" Margin="0,0,0,12">
+                    <i:Interaction.Triggers>
+                        <i:EventTrigger EventName="Tap">
+                            <ec:NavigateToPageAction TargetPage="/MapPage.xaml"/>
+                        </i:EventTrigger>
+                    </i:Interaction.Triggers>
+                </ListBoxItem>
+                <ListBoxItem Content="Static map sample" Margin="0,0,0,12">
+                    <i:Interaction.Triggers>
+                        <i:EventTrigger EventName="Tap">
+                            <ec:NavigateToPageAction TargetPage="/StaticMapPage.xaml"/>
+                        </i:EventTrigger>
+                    </i:Interaction.Triggers>
+                </ListBoxItem>
+                <ListBoxItem Content="Polyline sample" Margin="0,0,0,12">
+                    <i:Interaction.Triggers>
+                        <i:EventTrigger EventName="Tap">
+                            <ec:NavigateToPageAction TargetPage="/PolylinePage.xaml"/>
+                        </i:EventTrigger>
+                    </i:Interaction.Triggers>
+                </ListBoxItem>
+                <ListBoxItem Content="Real-life schema sample" Margin="0,0,0,12">
+                    <i:Interaction.Triggers>
+                        <i:EventTrigger EventName="Tap">
+                            <ec:NavigateToPageAction TargetPage="/SchemaPage.xaml"/>
+                        </i:EventTrigger>
+                    </i:Interaction.Triggers>
+                </ListBoxItem>
+            </ItemsControl>
         </StackPanel>
-		</ScrollViewer>
     </Grid>
- 
+
 </phone:PhoneApplicationPage>
