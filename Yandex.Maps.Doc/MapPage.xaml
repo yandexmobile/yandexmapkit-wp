@@ -57,7 +57,6 @@
 		        ZoomLevel="13"
 		        Center="53.905153, 27.558230"
                 DisplayLayers="map"
-			    TilesStretchFactor="1.5"
                 TrafficEnabled="True"
                 UseLocation="True"
                 ApiKey="{StaticResource ApiKey}"

@@ -16,8 +16,7 @@
     <TargetFrameworkProfile>WindowsPhone71</TargetFrameworkProfile>
     <TargetFrameworkIdentifier>Silverlight</TargetFrameworkIdentifier>
     <SilverlightApplication>true</SilverlightApplication>
-    <SupportedCultures>
-    </SupportedCultures>
+    <SupportedCultures>ru-RU;en-US;tr-TR;uk-UA</SupportedCultures>
     <XapOutputs>true</XapOutputs>
     <GenerateSilverlightManifest>true</GenerateSilverlightManifest>
     <XapFilename>Yandex.Maps.Doc.xap</XapFilename>
@@ -80,13 +79,13 @@
     <Reference Include="System.Windows.Interactivity, Version=3.8.5.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
     <Reference Include="System.Xml" />
     <Reference Include="mscorlib.extensions" />
-    <Reference Include="Yandex.Maps, Version=1.0.4595.1196, Culture=neutral, processorArchitecture=MSIL">
+    <Reference Include="Yandex.Maps, Version=1.0.4603.1237, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\Yandex.Maps.1.0.4595.1196-pre\lib\sl4-wp71\Yandex.Maps.dll</HintPath>
+      <HintPath>..\packages\Yandex.Maps.1.0.4603.1237-pre\lib\sl4-wp71\Yandex.Maps.dll</HintPath>
     </Reference>
     <Reference Include="Zlib, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\Yandex.Maps.1.0.4595.1196-pre\lib\sl4-wp71\Zlib.dll</HintPath>
+      <HintPath>..\packages\Yandex.Maps.1.0.4603.1237-pre\lib\sl4-wp71\Zlib.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>

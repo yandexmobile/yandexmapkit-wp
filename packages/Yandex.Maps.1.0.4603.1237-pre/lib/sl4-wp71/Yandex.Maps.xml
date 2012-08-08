@@ -195,12 +195,6 @@
             Class to handle <see cref="T:Yandex.Maps.PushPin" /> state changes
             </summary>
     </member>
-    <member name="P:Yandex.Maps.MapBase.TilesStretchFactor">
-      <summary>
-            Informs about current tiles stretch factor.
-            Setting this property won't affect its value.
-            </summary>
-    </member>
     <member name="P:Yandex.Maps.MapBase.TwilightModeEnabled">
       <summary>
             Night mode setting: enables or disables night mode on a map
@@ -225,6 +219,26 @@
     <member name="P:Yandex.Maps.MapBase.ViewportSize"></member>
     <member name="P:Yandex.Maps.MapBase.ZoomLevel"></member>
     <member name="F:Yandex.Maps.MapBase.ZoomLevelProperty"></member>
+    <member name="T:Yandex.Maps.MapGlobalSettings">
+      <summary>
+            Contains common to all map instances settings.
+            These settings are not saved during app shutdown.
+            </summary>
+    </member>
+    <member name="M:Yandex.Maps.MapGlobalSettings.#ctor">
+      <summary>Initializes a new instance of the <see cref="T:Yandex.Maps.MapGlobalSettings" /> class</summary>
+    </member>
+    <member name="P:Yandex.Maps.MapGlobalSettings.EnableLocationService">
+      <summary>
+            Indicates all mapkit instances can use location service inside.
+            </summary>
+    </member>
+    <member name="P:Yandex.Maps.MapGlobalSettings.Instance"></member>
+    <member name="P:Yandex.Maps.MapGlobalSettings.TilesStretchFactor">
+      <summary>
+            The stretch factor of the tiles.
+            </summary>
+    </member>
     <member name="T:Yandex.Maps.MapItemsControl">
       <summary>The items control that positions its children on a map.
             </summary>
@@ -512,7 +526,7 @@
     <member name="F:Yandex.Maps.PushPinManagerHelper.GroupKeysProperty"></member>
     <member name="M:Yandex.Maps.PushPinManagerHelper.SetGroupKeys(Yandex.Maps.PushPin,System.String[])"></member>
     <member name="T:Yandex.Maps.PushPinState">
-      <summary>The possible states for the <see cref="T:Yandex.Maps.PushPin" /> control.
+      <summary>The possible states for the <see cref="!:PushPin" /> control.
             </summary>
     </member>
     <member name="F:Yandex.Maps.PushPinState.Collapsed">
@@ -717,6 +731,11 @@
     </member>
     <member name="M:Yandex.Maps.ContentLayers.MetaContentLayer.#ctor(Yandex.Threading.Interfaces.IUiDispatcher,Yandex.Maps.API.Interfaces.IViewportTileConverter,Yandex.Collections.Interfaces.IQueue{Yandex.Maps.Interfaces.ILayerCommand},Yandex.Threading.Interfaces.IThread,Yandex.Maps.Repository.Interfaces.ITileManager{Yandex.Maps.API.Interfaces.ITile},Yandex.Maps.ContentLayers.Interfaces.IVisibleTileLayer{Yandex.Maps.API.Interfaces.ITile},Yandex.Positioning.Interfaces.IPositionWatcher,Yandex.Maps.API.Interfaces.IGeoPixelConverter)">
       <summary>Initializes a new instance of the <see cref="T:Yandex.Maps.ContentLayers.MetaContentLayer" /> class</summary>
+    </member>
+    <member name="P:Yandex.Maps.ContentLayers.MetaContentLayer.ActiveZoom">
+      <summary>
+            Current zoom level.
+            </summary>
     </member>
     <member name="P:Yandex.Maps.ContentLayers.MetaContentLayer.AreAllVisibleTilesLoaded">
       <summary>
