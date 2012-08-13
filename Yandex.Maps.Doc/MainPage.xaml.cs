@@ -15,11 +15,11 @@
         {
             get
             {
-                return Map.EnableLocationService;
+                return MapGlobalSettings.Instance.EnableLocationService;
             }
             set
             {
-                Map.EnableLocationService = value;
+                MapGlobalSettings.Instance.EnableLocationService = value;
             }
         }
     }
