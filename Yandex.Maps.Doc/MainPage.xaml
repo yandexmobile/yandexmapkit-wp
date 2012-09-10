@@ -67,6 +67,13 @@
                         </i:EventTrigger>
                     </i:Interaction.Triggers>
                 </ListBoxItem>
+                <ListBoxItem Content="Geocoding sample" Margin="0,0,0,12">
+                    <i:Interaction.Triggers>
+                        <i:EventTrigger EventName="Tap">
+                            <ec:NavigateToPageAction TargetPage="/GeocodingPage.xaml"/>
+                        </i:EventTrigger>
+                    </i:Interaction.Triggers>
+                </ListBoxItem>
             </ItemsControl>
         </StackPanel>
     </Grid>

@@ -81,7 +81,6 @@
                 DisplayLayers="pmap"
                 x:Name="map" 
                 ContentPadding="48"
-                ApiKey="{StaticResource ApiKey}" 
                 Margin="12,0,12,24">
                 <i:Interaction.Triggers>
                     <i:EventTrigger EventName="Tap">

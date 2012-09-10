@@ -59,7 +59,6 @@
                 DisplayLayers="map"
                 TrafficEnabled="True"
                 UseLocation="True"
-                ApiKey="{StaticResource ApiKey}"
                 OperationStatusChanged="MapOperationStatusChanged"
                 Tap="MapTap"
                 Grid.Row="1">

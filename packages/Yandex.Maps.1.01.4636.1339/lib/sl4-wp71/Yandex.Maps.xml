@@ -1,0 +1,990 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<doc>
+  <assembly>
+    <name>Yandex.Maps</name>
+  </assembly>
+  <members>
+    <member name="T:Yandex.Controls.TiledImagePanel">
+      <summary>
+            Control that fills all its content with the tiled images
+            </summary>
+    </member>
+    <member name="M:Yandex.Controls.TiledImagePanel.#ctor">
+      <summary>Initializes a new instance of the <see cref="T:Yandex.Controls.TiledImagePanel" /> class</summary>
+    </member>
+    <member name="P:Yandex.Controls.TiledImagePanel.HorizontalPeriod">
+      <summary>
+            Horizontal period (in pixels) of pattern in a background tile image.
+            Not obligatory.
+            </summary>
+    </member>
+    <member name="F:Yandex.Controls.TiledImagePanel.HorizontalPeriodProperty"></member>
+    <member name="P:Yandex.Controls.TiledImagePanel.TileImageHeight">
+      <summary>
+            Tiled image height.
+            </summary>
+    </member>
+    <member name="F:Yandex.Controls.TiledImagePanel.TileImageHeightProperty"></member>
+    <member name="P:Yandex.Controls.TiledImagePanel.TileImageSource">
+      <summary>
+            Tiled image source.
+            </summary>
+    </member>
+    <member name="F:Yandex.Controls.TiledImagePanel.TileImageSourceProperty"></member>
+    <member name="P:Yandex.Controls.TiledImagePanel.TileImageSourceUri"></member>
+    <member name="F:Yandex.Controls.TiledImagePanel.TileImageSourceUriProperty"></member>
+    <member name="P:Yandex.Controls.TiledImagePanel.TileImageWidth">
+      <summary>
+            Tiled image width.
+            </summary>
+    </member>
+    <member name="F:Yandex.Controls.TiledImagePanel.TileImageWidthProperty"></member>
+    <member name="P:Yandex.Controls.TiledImagePanel.VerticalPeriod">
+      <summary>
+            Vertical period (in pixels) of pattern in a background tile image.
+            Not obligatory.
+            </summary>
+    </member>
+    <member name="F:Yandex.Controls.TiledImagePanel.VerticalPeriodProperty"></member>
+    <member name="T:Yandex.Maps.Alignment">
+      <summary>The possible control (or content) alignments.
+            </summary>
+    </member>
+    <member name="F:Yandex.Maps.Alignment.TopLeft"></member>
+    <member name="F:Yandex.Maps.Alignment.TopCenter"></member>
+    <member name="F:Yandex.Maps.Alignment.TopRight"></member>
+    <member name="F:Yandex.Maps.Alignment.CenterLeft"></member>
+    <member name="F:Yandex.Maps.Alignment.Center"></member>
+    <member name="F:Yandex.Maps.Alignment.CenterRight"></member>
+    <member name="F:Yandex.Maps.Alignment.BotttomLeft"></member>
+    <member name="F:Yandex.Maps.Alignment.BottomCenter"></member>
+    <member name="F:Yandex.Maps.Alignment.BottomRight"></member>
+    <member name="T:Yandex.Maps.CollapseAllPushPinsAction">
+      <summary>
+        <c>CollapseAllPushPinsAction</c> makes content collapsed for all pushpins.
+            </summary>
+    </member>
+    <member name="M:Yandex.Maps.CollapseAllPushPinsAction.#ctor">
+      <summary>Initializes a new instance of the <see cref="T:Yandex.Maps.CollapseAllPushPinsAction" /> class</summary>
+    </member>
+    <member name="T:Yandex.Maps.Map">
+      <summary>
+        <c>Map</c> control. Map can be scrolled and zoomed. Zoom level can be set with pinch or by calling <see cref="M:Yandex.Maps.Map.ZoomIn" />, <see cref="M:Yandex.Maps.Map.ZoomOut" /> methods or by setting <see cref="P:Yandex.Maps.MapBase.ZoomLevel" /> property value.
+            Is a content control.
+            You can turn road traffic display on or off by setting <see cref="P:Yandex.Maps.Map.TrafficEnabled" /> property value.
+            You can monitor the the road traffic level number by subscribing to the <see cref="E:Yandex.Maps.Map.TrafficValueChanged" /> event. It's up to you how this number it is displayed.
+            </summary>
+    </member>
+    <member name="M:Yandex.Maps.Map.#ctor">
+      <summary>Initializes a new instance of the <see cref="T:Yandex.Maps.Map" /> class</summary>
+    </member>
+    <member name="M:Yandex.Maps.Map.JumpToCurrentLocation">
+      <summary>
+            Scrolls map to the specified location (if applicable).
+            </summary>
+    </member>
+    <member name="P:Yandex.Maps.Map.PlainViewPort"></member>
+    <member name="E:Yandex.Maps.Map.TrafficAvailbleChanged"></member>
+    <member name="P:Yandex.Maps.Map.TrafficEnabled"></member>
+    <member name="F:Yandex.Maps.Map.TrafficEnabledProperty">
+      <summary>Represents the property for enabling road traffic display.
+            </summary>
+    </member>
+    <member name="E:Yandex.Maps.Map.TrafficValueChanged"></member>
+    <member name="P:Yandex.Maps.Map.UseLocation">
+      <summary>Indicates location service for <c>Map</c> control instance is used. 
+            Location service is used by <see cref="M:Yandex.Maps.Map.JumpToCurrentLocation" /> method and to display user location mark on a map.
+            If <c>false</c>, user location mark is not visible on a map.
+            </summary>
+    </member>
+    <member name="F:Yandex.Maps.Map.UseLocationProperty">
+      <summary>Represents the property for enabling location service for <c>Map</c> control instance. 
+            Location service is used by <see cref="M:Yandex.Maps.Map.JumpToCurrentLocation" /> method and to display user location mark on a map.
+            </summary>
+    </member>
+    <member name="M:Yandex.Maps.Map.ZoomIn">
+      <summary>
+            Zooms map in.
+            </summary>
+    </member>
+    <member name="M:Yandex.Maps.Map.ZoomOut">
+      <summary>
+            Zooms map out.
+            </summary>
+    </member>
+    <member name="T:Yandex.Maps.MapBase">
+      <summary>Abstract base class for map controls. Is responsible for core map scaling and translations.
+            </summary>
+    </member>
+    <member name="P:Yandex.Maps.MapBase.ActualSize"></member>
+    <member name="P:Yandex.Maps.MapBase.AnimationLevel">
+      <summary>
+            Enables or disables map animation.
+            </summary>
+    </member>
+    <member name="P:Yandex.Maps.MapBase.ApiKey">
+      <summary>MapKit API key.
+            </summary>
+    </member>
+    <member name="F:Yandex.Maps.MapBase.ApiKeyProperty">
+      <summary>Represents MapKit API key.
+            </summary>
+    </member>
+    <member name="P:Yandex.Maps.MapBase.Center"></member>
+    <member name="M:Yandex.Maps.MapBase.CenterOnControl(System.Windows.UIElement)">
+      <summary>
+            Scrolls map to make mapChild appear in center of the viewport.
+            <see cref="F:Yandex.Maps.MapLayer.LocationProperty" /> attached property must be set, otherwise the method couldn't determine control's location and will throw ArgumentOutOfRangeException.
+            Method respects but does not require <see cref="F:Yandex.Maps.MapLayer.AlignmentProperty" /> and <see cref="F:Yandex.Maps.MapLayer.PositionOffsetProperty" />.
+            </summary>
+    </member>
+    <member name="F:Yandex.Maps.MapBase.CenterProperty"></member>
+    <member name="P:Yandex.Maps.MapBase.ContentPadding">
+      <summary>The padding for the content. Is used by <see cref="M:Yandex.Maps.MapBase.EnsureControlIsVisible(System.Windows.UIElement)" /> method.
+            </summary>
+    </member>
+    <member name="F:Yandex.Maps.MapBase.ContentPaddingProperty">
+      <summary>Represents the padding for controls on the map.
+            </summary>
+    </member>
+    <member name="M:Yandex.Maps.MapBase.CoordinatesToViewportPoint(Yandex.Positioning.GeoCoordinate)">
+      <summary>Convert the coordinates to the viewport point at current zoom level.
+            </summary>
+      <param name="value">The coordinates.</param>
+      <returns>The viewport point.</returns>
+    </member>
+    <member name="P:Yandex.Maps.MapBase.DisplayLayers">
+      <summary>
+            Determines which layers to show on a map.
+            </summary>
+    </member>
+    <member name="F:Yandex.Maps.MapBase.DisplayLayersProperty"></member>
+    <member name="M:Yandex.Maps.MapBase.Dispose">
+      <summary>Releases all resources used by the <see cref="T:Yandex.Maps.MapBase" /></summary>
+    </member>
+    <member name="M:Yandex.Maps.MapBase.EnsureControlIsVisible(System.Windows.UIElement)">
+      <summary>Make map child control visible by scrolling and zooming the map.
+            If the <see cref="F:Yandex.Maps.MapLayer.LocationProperty" /> is specified, then map is scrolled to have given point displayed inside the viewport.
+            If the <see cref="!:MapLayer.RelativeRectangle" /> is specified, then map is scrolled and zoomed to make entire object's rectangle visible in the viewport.
+            </summary>
+      <param name="mapChild">The map control's visual child.</param>
+    </member>
+    <member name="M:Yandex.Maps.MapBase.EnsureRectangleIsVisible(Yandex.Positioning.GeoCoordinatesRect)">
+      <summary>Makes rect visible by scrolling and zooming the map.
+            </summary>
+      <param name="rect">The area on a map.</param>
+    </member>
+    <member name="M:Yandex.Maps.MapBase.EnsureRectangleIsVisible(Yandex.Positioning.RelativeRect)">
+      <summary>Makes rect visible by scrolling and zooming the map.
+            </summary>
+      <param name="rect">The area on a map.</param>
+    </member>
+    <member name="M:Yandex.Maps.MapBase.EnsureVisibility(System.Collections.Generic.IEnumerable{System.Object})">
+      <summary>Makes all mapChildren visible by scrolling and zooming the map.
+            Respects only <see cref="F:Yandex.Maps.MapLayer.LocationProperty" /> which must be set to each child (DependencyObject).
+            </summary>
+    </member>
+    <member name="P:Yandex.Maps.MapBase.InstantCenter">
+      <summary>Use this value for layout calculations. Do not use <see cref="P:Yandex.Maps.MapBase.ZoomLevel" /> property.
+            </summary>
+    </member>
+    <member name="P:Yandex.Maps.MapBase.InstantZoomLevel">
+      <summary>Use this value for layout calculations. Do not use <see cref="P:Yandex.Maps.MapBase.ZoomLevel" /> property.
+            </summary>
+    </member>
+    <member name="P:Yandex.Maps.MapBase.OperationStatus"></member>
+    <member name="E:Yandex.Maps.MapBase.OperationStatusChanged">
+      <summary>Indicates <see cref="P:Yandex.Maps.MapBase.OperationStatus" /> property value has changed.
+            </summary>
+    </member>
+    <member name="F:Yandex.Maps.MapBase.OperationStatusProperty"></member>
+    <member name="P:Yandex.Maps.MapBase.PushPinManager">
+      <summary>
+            Class to handle <see cref="T:Yandex.Maps.PushPin" /> state changes
+            </summary>
+    </member>
+    <member name="P:Yandex.Maps.MapBase.TwilightModeEnabled">
+      <summary>
+            Night mode setting: enables or disables night mode on a map
+            </summary>
+    </member>
+    <member name="F:Yandex.Maps.MapBase.TwilightModeEnabledProperty">
+      <summary>
+            Dependency property for <see cref="P:Yandex.Maps.MapBase.TwilightModeEnabled" /></summary>
+    </member>
+    <member name="E:Yandex.Maps.MapBase.ViewAreaChanged"></member>
+    <member name="P:Yandex.Maps.MapBase.Viewport">
+      <summary>Instant viewport.
+            </summary>
+    </member>
+    <member name="M:Yandex.Maps.MapBase.ViewportPointToCoordinates(Yandex.Media.Point)">
+      <summary>
+            Convert control point to geo coordinates at current zoom level.
+            </summary>
+      <param name="point">The control point.</param>
+      <returns>Geo coordinates.</returns>
+    </member>
+    <member name="P:Yandex.Maps.MapBase.ViewportSize"></member>
+    <member name="P:Yandex.Maps.MapBase.ZoomLevel">
+      <summary>Published value of zoom level (typically 0 (entire world) to 17 (most detailed).
+            Every next zoomlevel is 2x of previous zoom level.
+            </summary>
+    </member>
+    <member name="F:Yandex.Maps.MapBase.ZoomLevelProperty"></member>
+    <member name="T:Yandex.Maps.MapGlobalSettings">
+      <summary>
+            Contains common to all map instances settings.
+            These settings are not saved during app shutdown.
+            </summary>
+    </member>
+    <member name="M:Yandex.Maps.MapGlobalSettings.#ctor">
+      <summary>Initializes a new instance of the <see cref="T:Yandex.Maps.MapGlobalSettings" /> class</summary>
+    </member>
+    <member name="P:Yandex.Maps.MapGlobalSettings.ApiKey">
+      <summary>MapKit API key for all map instances.
+            </summary>
+    </member>
+    <member name="P:Yandex.Maps.MapGlobalSettings.EnableLocationService">
+      <summary>
+            Indicates all mapkit instances can use location service inside.
+            </summary>
+    </member>
+    <member name="P:Yandex.Maps.MapGlobalSettings.Instance"></member>
+    <member name="P:Yandex.Maps.MapGlobalSettings.TilesStretchFactor">
+      <summary>
+            The stretch factor of the tiles.
+            </summary>
+    </member>
+    <member name="T:Yandex.Maps.MapItemsControl">
+      <summary>The items control that positions its children on a map.
+            </summary>
+    </member>
+    <member name="M:Yandex.Maps.MapItemsControl.#ctor">
+      <summary>Initializes a new instance of the <see cref="T:Yandex.Maps.MapItemsControl" /> class</summary>
+    </member>
+    <member name="M:Yandex.Maps.MapItemsControl.OnApplyTemplate"></member>
+    <member name="P:Yandex.Maps.MapItemsControl.ParentMap"></member>
+    <member name="M:Yandex.Maps.MapItemsControl.ProjectionUpdated(Yandex.Maps.Controls.ProjectionUpdateLevel)"></member>
+    <member name="T:Yandex.Maps.MapLayer">
+      <summary>
+        <c>MapLayer</c> is the map content panel control.
+            </summary>
+    </member>
+    <member name="M:Yandex.Maps.MapLayer.#ctor">
+      <summary>Initializes a new instance of the <see cref="T:Yandex.Maps.MapLayer" /> class</summary>
+    </member>
+    <member name="M:Yandex.Maps.MapLayer.AddChild(System.Windows.UIElement)"></member>
+    <member name="M:Yandex.Maps.MapLayer.AddChild(System.Windows.UIElement,Yandex.Positioning.GeoCoordinate)"></member>
+    <member name="P:Yandex.Maps.MapLayer.Alignment"></member>
+    <member name="F:Yandex.Maps.MapLayer.AlignmentProperty"></member>
+    <member name="M:Yandex.Maps.MapLayer.GetAlignment(System.Windows.DependencyObject)"></member>
+    <member name="M:Yandex.Maps.MapLayer.GetDependencyPropertyValue``1(System.Windows.DependencyObject,System.Windows.DependencyProperty,System.Windows.DependencyObject@)">
+      <summary>Get the value of given desired property from the given control or from the content of that control.
+            </summary>
+      <param name="dependencyObject">The dependency object to investigate.</param>
+      <param name="dependencyProperty">The dependency property to get.</param>
+      <param name="childObject">The optional child object of a given <param name="dependencyObject"></param>.
+            If it is null then try to determine it as VisualTree child.
+            Is used to get rid of repeating VisualTree checks.</param>
+      <typeparam name="T">The type of the property.</typeparam>
+      <returns>The value of the dependency property from the child. If child is 
+            <see cref="T:System.Windows.Controls.ContentPresenter" /> or <see cref="T:System.Windows.Controls.ContentControl" /> then its content is checked for the value.</returns>
+    </member>
+    <member name="M:Yandex.Maps.MapLayer.GetLocation(System.Windows.DependencyObject)"></member>
+    <member name="M:Yandex.Maps.MapLayer.GetLocationRectangle(System.Windows.DependencyObject)">
+      <summary>Get the bounding GeoCoordinate rectangle for an object.
+            </summary>
+    </member>
+    <member name="M:Yandex.Maps.MapLayer.GetPositionOffset(System.Windows.DependencyObject)">
+      <summary>
+            Gets the position offset in pixels of a child on a map.
+            </summary>
+    </member>
+    <member name="M:Yandex.Maps.MapLayer.GetRelativeRectangle(System.Windows.DependencyObject)">
+      <summary>Get the bounding relative coordinate rectangle for an object.
+            </summary>
+    </member>
+    <member name="M:Yandex.Maps.MapLayer.GetViewportChildRect(Yandex.Maps.MapBase,System.Windows.UIElement,Yandex.Positioning.GeoCoordinate,System.Nullable{Yandex.Maps.Alignment},Yandex.Media.Point)">
+      <summary>Get child bounding rect in viewport coordinates.
+            </summary>
+    </member>
+    <member name="P:Yandex.Maps.MapLayer.Location"></member>
+    <member name="F:Yandex.Maps.MapLayer.LocationProperty"></member>
+    <member name="P:Yandex.Maps.MapLayer.LocationRectangle"></member>
+    <member name="F:Yandex.Maps.MapLayer.LocationRectangleProperty">
+      <summary>Represents the bounding GeoCoordinates rectangle for an object. 
+            Value is used for positioning of the object and by the <see cref="M:Yandex.Maps.MapBase.EnsureControlIsVisible(System.Windows.UIElement)" /> method. Is ignored if <see cref="F:Yandex.Maps.MapLayer.RelativeRectangleProperty" /> value is set.
+            </summary>
+    </member>
+    <member name="P:Yandex.Maps.MapLayer.PositionOffset"></member>
+    <member name="F:Yandex.Maps.MapLayer.PositionOffsetProperty">
+      <summary>
+            Dependency property for PositionOffset.
+            </summary>
+    </member>
+    <member name="P:Yandex.Maps.MapLayer.RelativeRectangle"></member>
+    <member name="F:Yandex.Maps.MapLayer.RelativeRectangleProperty">
+      <summary>Represents the bounding relative coordinates rectangle for an object. 
+            Value is used for positioning of the object and by the <see cref="M:Yandex.Maps.MapBase.EnsureControlIsVisible(System.Windows.UIElement)" /> method. If it is set then <see cref="F:Yandex.Maps.MapLayer.LocationRectangleProperty" /> is ignored.
+            </summary>
+    </member>
+    <member name="M:Yandex.Maps.MapLayer.SetAlignment(System.Windows.DependencyObject,Yandex.Maps.Alignment)"></member>
+    <member name="M:Yandex.Maps.MapLayer.SetLocation(System.Windows.DependencyObject,Yandex.Positioning.GeoCoordinate)"></member>
+    <member name="M:Yandex.Maps.MapLayer.SetLocationRectangle(System.Windows.DependencyObject,Yandex.Positioning.GeoCoordinatesRect)">
+      <summary>Set the bounding GeoCoordinate rectangle for an object.
+            </summary>
+    </member>
+    <member name="M:Yandex.Maps.MapLayer.SetPositionOffset(System.Windows.DependencyObject,Yandex.Media.Point)">
+      <summary>
+            Sets the position offset in pixels of a child on a map.
+            </summary>
+    </member>
+    <member name="M:Yandex.Maps.MapLayer.SetRelativeRectangle(System.Windows.DependencyObject,Yandex.Positioning.RelativeRect)">
+      <summary>The bounding relative coordinates rectangle for an object.
+            </summary>
+    </member>
+    <member name="T:Yandex.Maps.MapPolygon">
+      <summary>The polygon displayed on a map. Shape vertices are specifed by the geo coordinates.
+            </summary>
+    </member>
+    <member name="M:Yandex.Maps.MapPolygon.#ctor">
+      <summary>Initializes a new instance of the <see cref="T:Yandex.Maps.MapPolygon" /> class</summary>
+    </member>
+    <member name="T:Yandex.Maps.MapPolyline">
+      <summary>The polyline displayed on a map. Shape vertices are specifed by the geo coordinates.
+            </summary>
+    </member>
+    <member name="M:Yandex.Maps.MapPolyline.#ctor">
+      <summary>Initializes a new instance of the <see cref="T:Yandex.Maps.MapPolyline" /> class</summary>
+    </member>
+    <member name="T:Yandex.Maps.MapPolylineBase"></member>
+    <member name="M:Yandex.Maps.MapPolylineBase.#ctor">
+      <summary>Initializes a new instance of the <see cref="T:Yandex.Maps.MapPolylineBase" /> class</summary>
+    </member>
+    <member name="T:Yandex.Maps.MapPresenterFactory">
+      <summary>
+            Map presenter's factory
+            </summary>
+    </member>
+    <member name="M:Yandex.Maps.MapPresenterFactory.#ctor">
+      <summary>Initializes a new instance of the <see cref="T:Yandex.Maps.MapPresenterFactory" /> class</summary>
+    </member>
+    <member name="M:Yandex.Maps.MapPresenterFactory.Get(Yandex.Maps.MapPresenterType,Yandex.Maps.Interfaces.IMapViewBase)">
+      <summary>
+            Create map presenter and initialise.
+            </summary>
+    </member>
+    <member name="T:Yandex.Maps.MapShape">
+      <summary>The polyline displayed on a map. Map vertices are specifed by the geo coordinates.
+            </summary>
+    </member>
+    <member name="P:Yandex.Maps.MapShape.BoundingRect"></member>
+    <member name="M:Yandex.Maps.MapShape.Dispose">
+      <summary>Releases all resources used by the <see cref="T:Yandex.Maps.MapShape" /></summary>
+    </member>
+    <member name="M:Yandex.Maps.MapShape.OnApplyTemplate"></member>
+    <member name="P:Yandex.Maps.MapShape.ParentMap"></member>
+    <member name="M:Yandex.Maps.MapShape.ProjectionUpdated(Yandex.Maps.Controls.ProjectionUpdateLevel)"></member>
+    <member name="P:Yandex.Maps.MapShape.RelativePointsList">
+      <summary>Get / set relative points list.
+            </summary>
+    </member>
+    <member name="F:Yandex.Maps.MapShape.RelativePointsListProperty">
+      <summary>List of relative coordinate points.
+            </summary>
+    </member>
+    <member name="P:Yandex.Maps.MapShape.Stroke"></member>
+    <member name="P:Yandex.Maps.MapShape.StrokeEndLineCap">
+      <summary>Get / set polyline end type.
+            </summary>
+    </member>
+    <member name="F:Yandex.Maps.MapShape.StrokeEndLineCapProperty">
+      <summary>Specify polyline end type.
+            </summary>
+    </member>
+    <member name="P:Yandex.Maps.MapShape.StrokeLineJoin"></member>
+    <member name="F:Yandex.Maps.MapShape.StrokeLineJoinProperty"></member>
+    <member name="F:Yandex.Maps.MapShape.StrokeProperty"></member>
+    <member name="P:Yandex.Maps.MapShape.StrokeStartLineCap">
+      <summary>Get / set polyline start type.
+            </summary>
+    </member>
+    <member name="F:Yandex.Maps.MapShape.StrokeStartLineCapProperty">
+      <summary>Specify polyline start type.
+            </summary>
+    </member>
+    <member name="P:Yandex.Maps.MapShape.StrokeThickness"></member>
+    <member name="F:Yandex.Maps.MapShape.StrokeThicknessProperty"></member>
+    <member name="T:Yandex.Maps.MapShapeObservable">
+      <summary>Base map shape with collection type source of points which can be an INotifyCollectionChanged.
+            </summary>
+    </member>
+    <member name="M:Yandex.Maps.MapShapeObservable.#ctor">
+      <summary>Ctor.
+            </summary>
+    </member>
+    <member name="M:Yandex.Maps.MapShapeObservable.GetLocations">
+      <summary>Get locations.
+            </summary>
+      <returns>
+        <see cref="P:Yandex.Maps.MapShapeObservable.Locations" /> property value.</returns>
+    </member>
+    <member name="P:Yandex.Maps.MapShapeObservable.Locations">
+      <summary>The set of shape vertices coordinates.
+            </summary>
+    </member>
+    <member name="F:Yandex.Maps.MapShapeObservable.LocationsProperty">
+      <summary>The shape vertices coordinates.
+            </summary>
+    </member>
+    <member name="M:Yandex.Maps.MapShapeObservable.SetLocations(System.Collections.ObjectModel.Collection{Yandex.Positioning.GeoCoordinate})">
+      <summary>Set locations.
+            </summary>
+      <param name="value">Set <see cref="P:Yandex.Maps.MapShapeObservable.Locations" /> property value.</param>
+    </member>
+    <member name="T:Yandex.Maps.OperationStatus">
+      <summary>State of an object which may perform performance-critical operations.
+            </summary>
+    </member>
+    <member name="F:Yandex.Maps.OperationStatus.Idle">
+      <summary>Control is idle. Feel free to do anything you want.
+            </summary>
+    </member>
+    <member name="F:Yandex.Maps.OperationStatus.Normal">
+      <summary>Control is doing something. Please perform non-intensive operations only.
+            </summary>
+    </member>
+    <member name="F:Yandex.Maps.OperationStatus.Busy">
+      <summary>Control is busy with critical operations. You stop doing all your jobs until main process is finished with its operations.
+            </summary>
+    </member>
+    <member name="T:Yandex.Maps.PositionAccuracyControl">
+      <summary>
+            The control for displaying the current position accuracy circle.
+            </summary>
+    </member>
+    <member name="M:Yandex.Maps.PositionAccuracyControl.#ctor">
+      <summary>Initializes a new instance of the <see cref="T:Yandex.Maps.PositionAccuracyControl" /> class</summary>
+    </member>
+    <member name="M:Yandex.Maps.PositionAccuracyControl.#ctor(Yandex.Positioning.Interfaces.IPositionWatcher,Yandex.Maps.API.Interfaces.IGeoPixelConverter,Yandex.Maps.API.Interfaces.IViewportPointConveter,Yandex.Threading.Interfaces.IUiDispatcher)">
+      <summary>Initializes a new instance of the <see cref="T:Yandex.Maps.PositionAccuracyControl" /> class</summary>
+    </member>
+    <member name="M:Yandex.Maps.PositionAccuracyControl.HidePosition"></member>
+    <member name="M:Yandex.Maps.PositionAccuracyControl.OnApplyTemplate"></member>
+    <member name="P:Yandex.Maps.PositionAccuracyControl.ParentMap"></member>
+    <member name="M:Yandex.Maps.PositionAccuracyControl.ProjectionUpdated(Yandex.Maps.Controls.ProjectionUpdateLevel)"></member>
+    <member name="T:Yandex.Maps.PositionControl">
+      <summary>The control for displaying the current position.
+            </summary>
+    </member>
+    <member name="M:Yandex.Maps.PositionControl.#ctor">
+      <summary>Initializes a new instance of the <see cref="T:Yandex.Maps.PositionControl" /> class</summary>
+    </member>
+    <member name="M:Yandex.Maps.PositionControl.HidePosition"></member>
+    <member name="M:Yandex.Maps.PositionControl.OnApplyTemplate"></member>
+    <member name="T:Yandex.Maps.PushPin">
+      <summary>The pushpin container control.
+            </summary>
+    </member>
+    <member name="M:Yandex.Maps.PushPin.#ctor">
+      <summary>Initializes a new instance of the <see cref="T:Yandex.Maps.PushPin" /> class</summary>
+    </member>
+    <member name="E:Yandex.Maps.PushPin.BalloonTapped">
+      <summary>Occurs when baloon area of pushpin is tapped.
+            </summary>
+    </member>
+    <member name="P:Yandex.Maps.PushPin.ContentVisibility">
+      <summary>
+            Determines whether pushpin balloon with content visible or not.
+            </summary>
+    </member>
+    <member name="F:Yandex.Maps.PushPin.ContentVisibilityProperty">
+      <summary>Represents pushpin's balloon visibility. Balloon contains pushpin's content.
+            </summary>
+    </member>
+    <member name="P:Yandex.Maps.PushPin.ExpandedImageSource">
+      <summary>
+        <see cref="T:System.Windows.Media.ImageSource" /> for the expanded state image.
+            </summary>
+    </member>
+    <member name="F:Yandex.Maps.PushPin.ExpandedImageSourceProperty">
+      <summary>Represents <see cref="T:System.Windows.Media.ImageSource" /> for the expanded state image.
+            </summary>
+    </member>
+    <member name="M:Yandex.Maps.PushPin.OnApplyTemplate">
+      <summary>
+            In case properties were set before template applied,
+            VisualStateManager.GoToState hadn't done anything
+            </summary>
+    </member>
+    <member name="M:Yandex.Maps.PushPin.OnPreviewTap(System.ComponentModel.CancelEventArgs)"></member>
+    <member name="E:Yandex.Maps.PushPin.PreviewTap">
+      <summary>
+            Indicates pushpin's content visibility will be changed to visible.
+            </summary>
+    </member>
+    <member name="P:Yandex.Maps.PushPin.State">
+      <summary>
+            Determines whether pushpin is minimized to dot or pushpin is displayed normally.
+            </summary>
+    </member>
+    <member name="E:Yandex.Maps.PushPin.StateChanged">
+      <summary>
+            Fires after State property is changed.
+            </summary>
+    </member>
+    <member name="F:Yandex.Maps.PushPin.StateProperty">
+      <summary>Represents pushpin expansion (dot or comma) state property.
+            </summary>
+    </member>
+    <member name="T:Yandex.Maps.PushPinManagerHelper">
+      <summary>
+            Static class to keep GroupKeys property used by <see cref="T:Yandex.Maps.PushPinManager" /> and route it's updates to <see cref="T:Yandex.Maps.PushPinManager" /></summary>
+    </member>
+    <member name="M:Yandex.Maps.PushPinManagerHelper.GetGroupKeys(Yandex.Maps.PushPin)">
+      <summary>Get <see cref="F:Yandex.Maps.PushPinManagerHelper.GroupKeysProperty" /> value for XAML.
+            </summary>
+      <param name="element">Owner element.</param>
+      <returns>Current group keys or new instance of collection if not set yet.</returns>
+    </member>
+    <member name="P:Yandex.Maps.PushPinManagerHelper.GroupKeys"></member>
+    <member name="F:Yandex.Maps.PushPinManagerHelper.GroupKeysProperty"></member>
+    <member name="M:Yandex.Maps.PushPinManagerHelper.SetGroupKeys(Yandex.Maps.PushPin,System.Collections.ObjectModel.Collection{System.String})">
+      <summary>Set <see cref="F:Yandex.Maps.PushPinManagerHelper.GroupKeysProperty" /> value from XAML.
+            </summary>
+      <param name="element">Owner element.</param>
+      <param name="value">New value of group keys.</param>
+    </member>
+    <member name="T:Yandex.Maps.PushPinState">
+      <summary>The possible states for the <see cref="!:PushPin" /> control.
+            </summary>
+    </member>
+    <member name="F:Yandex.Maps.PushPinState.Collapsed">
+      <summary>Pushpin is minimized.
+            </summary>
+    </member>
+    <member name="F:Yandex.Maps.PushPinState.Expanded">
+      <summary>Pushpin is displayed normally.
+            </summary>
+    </member>
+    <member name="T:Yandex.Maps.ScaleRuleControl">
+      <summary>
+            Control to show scale rule on map.
+            </summary>
+    </member>
+    <member name="M:Yandex.Maps.ScaleRuleControl.#ctor">
+      <summary>Initializes a new instance of the <see cref="T:Yandex.Maps.ScaleRuleControl" /> class</summary>
+    </member>
+    <member name="M:Yandex.Maps.ScaleRuleControl.OnApplyTemplate"></member>
+    <member name="P:Yandex.Maps.ScaleRuleControl.OperationStatus">
+      <summary>
+            Current map's <see cref="P:Yandex.Maps.MapBase.OperationStatus" />.
+            </summary>
+    </member>
+    <member name="F:Yandex.Maps.ScaleRuleControl.OperationStatusProperty"></member>
+    <member name="P:Yandex.Maps.ScaleRuleControl.PlainViewPort">
+      <summary>
+            Current map's view-port.
+            Usually <see cref="P:Yandex.Maps.Map.PlainViewPort" />.
+            </summary>
+    </member>
+    <member name="F:Yandex.Maps.ScaleRuleControl.PlainViewPortProperty"></member>
+    <member name="P:Yandex.Maps.ScaleRuleControl.Text">
+      <summary>
+            Text to show on control. 
+            </summary>
+    </member>
+    <member name="F:Yandex.Maps.ScaleRuleControl.TextProperty"></member>
+    <member name="P:Yandex.Maps.ScaleRuleControl.ZoomLevel">
+      <summary>
+            Current map's zoom level.
+            </summary>
+    </member>
+    <member name="F:Yandex.Maps.ScaleRuleControl.ZoomLevelProperty"></member>
+    <member name="T:Yandex.Maps.StaticMap">
+      <summary>The static (non-interactive) map control. 
+            Does not support traffic, routing and position display.
+            Does not support touch scroll or pinch zoom.
+            </summary>
+    </member>
+    <member name="M:Yandex.Maps.StaticMap.#ctor">
+      <summary>Initializes a new instance of the <see cref="T:Yandex.Maps.StaticMap" /> class</summary>
+    </member>
+    <member name="P:Yandex.Maps.StaticMap.LayerManager"></member>
+    <member name="P:Yandex.Maps.StaticMap.MapContentLayer"></member>
+    <member name="M:Yandex.Maps.StaticMap.OnApplyTemplate"></member>
+    <member name="T:Yandex.Maps.API.BaseLayers">
+      <summary>Map layers.
+            </summary>
+    </member>
+    <member name="F:Yandex.Maps.API.BaseLayers.none"></member>
+    <member name="F:Yandex.Maps.API.BaseLayers.map">
+      <summary>Схема - картинка.
+            </summary>
+    </member>
+    <member name="F:Yandex.Maps.API.BaseLayers.sat">
+      <summary>Спутник - картинка.
+            </summary>
+    </member>
+    <member name="F:Yandex.Maps.API.BaseLayers.skl">
+      <summary>Улицы - картинка (на всякий случай).
+            </summary>
+    </member>
+    <member name="F:Yandex.Maps.API.BaseLayers.pmap">
+      <summary>Народная карта - картинка.
+            </summary>
+    </member>
+    <member name="F:Yandex.Maps.API.BaseLayers.pskl">
+      <summary>Народные улицы - картинка (на всякий случай).
+            </summary>
+    </member>
+    <member name="F:Yandex.Maps.API.BaseLayers.trf">
+      <summary>Растровые пробки.
+            </summary>
+    </member>
+    <member name="F:Yandex.Maps.API.BaseLayers.mrks">
+      <summary>Данные об объектах - сжатый xml.
+            </summary>
+    </member>
+    <member name="F:Yandex.Maps.API.BaseLayers.ftrs">
+      <summary>Доступные возможности на тайле - бинарные данные.
+            </summary>
+    </member>
+    <member name="F:Yandex.Maps.API.BaseLayers.vmap">
+      <summary>Схема в векторе.
+            </summary>
+    </member>
+    <member name="F:Yandex.Maps.API.BaseLayers.meta">
+      <summary>The metadata layer.
+            </summary>
+    </member>
+    <member name="F:Yandex.Maps.API.BaseLayers.vmp2">
+      <summary>Some vector layer.
+            </summary>
+    </member>
+    <member name="F:Yandex.Maps.API.BaseLayers.vlb2">
+      <summary>Some vector layer.
+            </summary>
+    </member>
+    <member name="F:Yandex.Maps.API.BaseLayers.vrds">
+      <summary>Some vector layer.
+            </summary>
+    </member>
+    <member name="F:Yandex.Maps.API.BaseLayers.vpnt">
+      <summary>Some vector layer.
+            </summary>
+    </member>
+    <member name="T:Yandex.Maps.Behavior.PushPinBehaviorBase">
+      <summary>
+            Base class for pushpin behaviors.
+            </summary>
+    </member>
+    <member name="P:Yandex.Maps.Behavior.PushPinBehaviorBase.GroupKey">
+      <summary>
+            Determines pushpin group which is handled by the behavior. Other groups are ignored.
+            Can be set only once.
+            </summary>
+    </member>
+    <member name="T:Yandex.Maps.Behavior.PushPinContentVisibilityBehavior">
+      <summary>
+            Behavior that handles changing of pushpins ContentVisibility property
+            </summary>
+    </member>
+    <member name="M:Yandex.Maps.Behavior.PushPinContentVisibilityBehavior.#ctor">
+      <summary>Initializes a new instance of the <see cref="T:Yandex.Maps.Behavior.PushPinContentVisibilityBehavior" /> class</summary>
+    </member>
+    <member name="T:Yandex.Maps.Behavior.PushPinStateBehavior">
+      <summary>
+            Managers pushpin states in the group. 
+            Automatically collapses pushpins or expands them depending on pushpins density on a screen.
+            </summary>
+    </member>
+    <member name="M:Yandex.Maps.Behavior.PushPinStateBehavior.#ctor">
+      <summary>Initializes a new instance of the <see cref="T:Yandex.Maps.Behavior.PushPinStateBehavior" /> class</summary>
+    </member>
+    <member name="P:Yandex.Maps.Behavior.PushPinStateBehavior.ExcludeFromHandlingGroupKey">
+      <summary>
+            Pushpin behavior does not change pushpin states from this group, but accounts them.
+            </summary>
+    </member>
+    <member name="M:Yandex.Maps.Behavior.PushPinStateBehavior.ForcePushPinStatesRecalculation">
+      <summary>
+            Force pushpin states total recalculation.
+            </summary>
+    </member>
+    <member name="T:Yandex.Maps.Behavior.PushPinZIndexBehavior">
+      <summary>
+        <c>PushPinZIndexBehavior</c> manages pushpin z-indexes to have expanded pushpins (AKA commas) displayed over collapsed pushpins.
+            Pushpins-dots have ZIndex = 0, pushpins-commas are tiled.
+            </summary>
+    </member>
+    <member name="M:Yandex.Maps.Behavior.PushPinZIndexBehavior.#ctor">
+      <summary>Initializes a new instance of the <see cref="T:Yandex.Maps.Behavior.PushPinZIndexBehavior" /> class</summary>
+    </member>
+    <member name="T:Yandex.Maps.ContentLayers.LayerManager">
+      <summary>The manager for tiled content layers.
+            </summary>
+    </member>
+    <member name="M:Yandex.Maps.ContentLayers.LayerManager.#ctor">
+      <summary>Initializes a new instance of the <see cref="T:Yandex.Maps.ContentLayers.LayerManager" /> class</summary>
+    </member>
+    <member name="M:Yandex.Maps.ContentLayers.LayerManager.AddContentLayer(Yandex.Maps.ContentLayers.Interfaces.IContentLayer)"></member>
+    <member name="M:Yandex.Maps.ContentLayers.LayerManager.AddTileContentLayer(Yandex.Maps.ContentLayers.Interfaces.ITileContentLayer)"></member>
+    <member name="M:Yandex.Maps.ContentLayers.LayerManager.DisposeContent"></member>
+    <member name="M:Yandex.Maps.ContentLayers.LayerManager.DisposeContentOutsideArea(Yandex.Maps.API.ViewportRect)"></member>
+    <member name="P:Yandex.Maps.ContentLayers.LayerManager.OperationMode"></member>
+    <member name="M:Yandex.Maps.ContentLayers.LayerManager.Reload(Yandex.Maps.API.ViewportRect)"></member>
+    <member name="M:Yandex.Maps.ContentLayers.LayerManager.RemoveContentLayer(Yandex.Maps.ContentLayers.Interfaces.IContentLayer)"></member>
+    <member name="M:Yandex.Maps.ContentLayers.LayerManager.RemoveTileContentLayer(Yandex.Maps.ContentLayers.Interfaces.ITileContentLayer)"></member>
+    <member name="T:Yandex.Maps.ContentLayers.MapContentLayer">
+      <summary>The map tiles content layer.
+            </summary>
+    </member>
+    <member name="M:Yandex.Maps.ContentLayers.MapContentLayer.#ctor">
+      <summary>Initializes a new instance of the <see cref="T:Yandex.Maps.ContentLayers.MapContentLayer" /> class</summary>
+    </member>
+    <member name="M:Yandex.Maps.ContentLayers.MapContentLayer.#ctor(Yandex.Maps.ContentLayers.Interfaces.ITileZoomLayerBuilder{Yandex.Maps.API.Interfaces.ITile},System.Collections.Generic.IDictionary{System.Byte,Yandex.Maps.ContentLayers.Interfaces.ITileZoomLayer{Yandex.Maps.API.Interfaces.ITile}},Yandex.Threading.Interfaces.IUiDispatcher,Yandex.Maps.API.Interfaces.IZoomLevelConverter,Yandex.Maps.API.Interfaces.IViewportTileConverter,Yandex.Collections.Interfaces.IQueue{Yandex.Maps.Interfaces.ILayerCommand},Yandex.Threading.Interfaces.IThread,Yandex.Maps.Repository.Interfaces.ITileManager{Yandex.Maps.API.Interfaces.ITile},System.Collections.Generic.IDictionary{Yandex.Maps.API.Interfaces.ITileInfo,System.Boolean},Yandex.Maps.Config.Interfaces.IConfigMediator,Yandex.WebUtils.Interfaces.INetworkInterfaceWrapper,Yandex.Memory.IMemoryPlanner,Yandex.Collections.Interfaces.IMemoryCache{Yandex.Maps.API.Interfaces.ITileInfo,Yandex.Maps.API.Interfaces.ITile},Yandex.Maps.TileWeighting.ITileWeightCalculator)">
+      <summary>Initializes a new instance of the <see cref="T:Yandex.Maps.ContentLayers.MapContentLayer" /> class</summary>
+    </member>
+    <member name="E:Yandex.Maps.ContentLayers.MapContentLayer.AutoPeoplesMapIsDisplayed">
+      <summary>Is fired when automatic switch to people's map has been performed while map schema is selected.
+            </summary>
+    </member>
+    <member name="P:Yandex.Maps.ContentLayers.MapContentLayer.Layers"></member>
+    <member name="T:Yandex.Maps.ContentLayers.MetaContentLayer">
+      <summary>Tile layer that controls the meta information tiles for the visible area.
+            Calculates meta info summary on viewport.
+            </summary>
+    </member>
+    <member name="M:Yandex.Maps.ContentLayers.MetaContentLayer.#ctor">
+      <summary>Initializes a new instance of the <see cref="T:Yandex.Maps.ContentLayers.MetaContentLayer" /> class</summary>
+    </member>
+    <member name="M:Yandex.Maps.ContentLayers.MetaContentLayer.#ctor(Yandex.Threading.Interfaces.IUiDispatcher,Yandex.Maps.API.Interfaces.IViewportTileConverter,Yandex.Collections.Interfaces.IQueue{Yandex.Maps.Interfaces.ILayerCommand},Yandex.Threading.Interfaces.IThread,Yandex.Maps.Repository.Interfaces.ITileManager{Yandex.Maps.API.Interfaces.ITile},Yandex.Maps.ContentLayers.Interfaces.IVisibleTileLayer{Yandex.Maps.API.Interfaces.ITile},Yandex.Positioning.Interfaces.IPositionWatcher,Yandex.Maps.API.Interfaces.IGeoPixelConverter)">
+      <summary>Initializes a new instance of the <see cref="T:Yandex.Maps.ContentLayers.MetaContentLayer" /> class</summary>
+    </member>
+    <member name="P:Yandex.Maps.ContentLayers.MetaContentLayer.ActiveZoom">
+      <summary>
+            Current zoom level.
+            </summary>
+    </member>
+    <member name="P:Yandex.Maps.ContentLayers.MetaContentLayer.AreAllVisibleTilesLoaded">
+      <summary>
+            Determines whether all Visible Files are loaded or not.
+            </summary>
+    </member>
+    <member name="M:Yandex.Maps.ContentLayers.MetaContentLayer.GetTileByCoordinates(Yandex.Positioning.GeoCoordinate)"></member>
+    <member name="M:Yandex.Maps.ContentLayers.MetaContentLayer.IsRoutingEnabledInCoordinates(Yandex.Positioning.GeoCoordinate)"></member>
+    <member name="P:Yandex.Maps.ContentLayers.MetaContentLayer.RouteGuidanceEnabled">
+      <summary>Get the route guidance permission.
+            </summary>
+    </member>
+    <member name="F:Yandex.Maps.ContentLayers.MetaContentLayer.RouteGuidanceEnabledProperty">
+      <summary>Represents the route guidance permission.
+            </summary>
+    </member>
+    <member name="P:Yandex.Maps.ContentLayers.MetaContentLayer.RoutingEnabled">
+      <summary>
+            Is routing available in this point
+            </summary>
+    </member>
+    <member name="F:Yandex.Maps.ContentLayers.MetaContentLayer.RoutingEnabledProperty">
+      <summary>
+            Is routing available in this point property
+            </summary>
+    </member>
+    <member name="P:Yandex.Maps.ContentLayers.MetaContentLayer.TrafficAvailable"></member>
+    <member name="E:Yandex.Maps.ContentLayers.MetaContentLayer.TrafficAvailbleChanged"></member>
+    <member name="P:Yandex.Maps.ContentLayers.MetaContentLayer.VisibleTiles">
+      <summary>
+            List of currently visible on screen tiles.
+            </summary>
+    </member>
+    <member name="E:Yandex.Maps.ContentLayers.MetaContentLayer.VisibleTilesChanged">
+      <summary>
+            Detects changes of VisibleTiles list.
+            </summary>
+    </member>
+    <member name="T:Yandex.Maps.ContentLayers.TileContentLayerBase`1">
+      <summary>The base class for content layers. Does the commands routing to individual layers.
+            </summary>
+    </member>
+    <member name="P:Yandex.Maps.ContentLayers.TileContentLayerBase`1.Control"></member>
+    <member name="P:Yandex.Maps.ContentLayers.TileContentLayerBase`1.ZoomLevelsToDisplaySimultaneously">
+      <summary>The number of levels to display simultaneously under the current level.
+            </summary>
+    </member>
+    <member name="T:Yandex.Maps.ContentLayers.TrafficContentLayer">
+      <summary>The road traffic (jams) content layer.
+            </summary>
+    </member>
+    <member name="M:Yandex.Maps.ContentLayers.TrafficContentLayer.#ctor">
+      <summary>Initializes a new instance of the <see cref="T:Yandex.Maps.ContentLayers.TrafficContentLayer" /> class</summary>
+    </member>
+    <member name="M:Yandex.Maps.ContentLayers.TrafficContentLayer.#ctor(Yandex.Maps.ContentLayers.Interfaces.ITrafficTileZoomLayerBuilder,System.Collections.Generic.IDictionary{System.Byte,Yandex.Maps.ContentLayers.Interfaces.ITileZoomLayer{Yandex.Maps.Traffic.Interfaces.IJamTile}},Yandex.Threading.Interfaces.IUiDispatcher,Yandex.Maps.API.Interfaces.IZoomLevelConverter,Yandex.Maps.API.Interfaces.IViewportTileConverter,Yandex.Collections.Interfaces.IQueue{Yandex.Maps.Interfaces.ILayerCommand},Yandex.Threading.Interfaces.IThread,Yandex.Maps.Repository.Interfaces.ITileManager{Yandex.Maps.Traffic.Interfaces.IJamTile},Yandex.Maps.API.Interfaces.IGeoPixelConverter,Yandex.Maps.API.Interfaces.IViewportPointConveter,Yandex.Maps.Config.Interfaces.IConfigMediator,Yandex.Maps.Traffic.Interfaces.IJamManager,Yandex.Maps.PrinterClient.Interfaces.IPrinterManager,Yandex.WebUtils.Interfaces.INetworkInterfaceWrapper,Yandex.Maps.Traffic.Interfaces.IJamRender)">
+      <summary>Initializes a new instance of the <see cref="T:Yandex.Maps.ContentLayers.TrafficContentLayer" /> class</summary>
+    </member>
+    <member name="P:Yandex.Maps.ContentLayers.TrafficContentLayer.Enabled"></member>
+    <member name="M:Yandex.Maps.ContentLayers.TrafficContentLayer.OnTrafficValueChanged(Yandex.Maps.Controls.Events.TrafficValueChangedArgs)"></member>
+    <member name="M:Yandex.Maps.ContentLayers.TrafficContentLayer.Reload(Yandex.Maps.API.ViewportRect)"></member>
+    <member name="M:Yandex.Maps.ContentLayers.TrafficContentLayer.ResetCachedTileBitmaps"></member>
+    <member name="E:Yandex.Maps.ContentLayers.TrafficContentLayer.TrafficValueChanged"></member>
+    <member name="T:Yandex.Maps.Controls.Events.TrafficAvailableChangedArgs"></member>
+    <member name="M:Yandex.Maps.Controls.Events.TrafficAvailableChangedArgs.#ctor">
+      <summary>Initializes a new instance of the <see cref="T:Yandex.Maps.Controls.Events.TrafficAvailableChangedArgs" /> class</summary>
+    </member>
+    <member name="P:Yandex.Maps.Controls.Events.TrafficAvailableChangedArgs.TrafficAvailable"></member>
+    <member name="T:Yandex.Maps.Controls.Events.TrafficValueChangedArgs"></member>
+    <member name="M:Yandex.Maps.Controls.Events.TrafficValueChangedArgs.#ctor(System.Nullable{System.Byte})">
+      <summary>Initializes a new instance of the <see cref="T:Yandex.Maps.Controls.Events.TrafficValueChangedArgs" /> class</summary>
+    </member>
+    <member name="P:Yandex.Maps.Controls.Events.TrafficValueChangedArgs.TrafficValue"></member>
+    <member name="T:Yandex.Maps.Events.GroupKeyArgs"></member>
+    <member name="M:Yandex.Maps.Events.GroupKeyArgs.#ctor(System.String)">
+      <summary>Initializes a new instance of the <see cref="T:Yandex.Maps.Events.GroupKeyArgs" /> class</summary>
+    </member>
+    <member name="P:Yandex.Maps.Events.GroupKeyArgs.GroupKey"></member>
+    <member name="T:Yandex.Maps.Events.OperationStatusChangedEventArgs">
+      <summary>The event arguments for OperationStatusChanged event.
+            </summary>
+    </member>
+    <member name="M:Yandex.Maps.Events.OperationStatusChangedEventArgs.#ctor(Yandex.Maps.OperationStatus)">
+      <summary>Initializes a new instance of the <see cref="T:Yandex.Maps.Events.OperationStatusChangedEventArgs" /> class</summary>
+    </member>
+    <member name="P:Yandex.Maps.Events.OperationStatusChangedEventArgs.OperationStatus">
+      <summary>New value.
+            </summary>
+    </member>
+    <member name="T:Yandex.Maps.Events.PositionChangedEventArgs">
+      <summary>The event args for <see cref="E:Yandex.Maps.PositionManager.Interfaces.IPositionManager.PositionChanged" /> event.
+            </summary>
+    </member>
+    <member name="M:Yandex.Maps.Events.PositionChangedEventArgs.#ctor(Yandex.Media.Point,System.Double,Yandex.Maps.Events.PositionChangeType)">
+      <summary>Initializes a new instance of the <see cref="T:Yandex.Maps.Events.PositionChangedEventArgs" /> class</summary>
+    </member>
+    <member name="P:Yandex.Maps.Events.PositionChangedEventArgs.Position">
+      <summary>The new position.
+            </summary>
+    </member>
+    <member name="P:Yandex.Maps.Events.PositionChangedEventArgs.PositionChangeType">
+      <summary>Type of position.
+            </summary>
+    </member>
+    <member name="P:Yandex.Maps.Events.PositionChangedEventArgs.ZoomLevel">
+      <summary>The new zoom level.
+            </summary>
+    </member>
+    <member name="T:Yandex.Maps.Events.PositionChangeType">
+      <summary>Indicates if position change is interim during animation or final.
+            </summary>
+    </member>
+    <member name="F:Yandex.Maps.Events.PositionChangeType.Interim"></member>
+    <member name="F:Yandex.Maps.Events.PositionChangeType.Final"></member>
+    <member name="T:Yandex.Maps.Geocoding.GeocodeRequestParameters">
+      <summary>The geocoding parameters.
+            </summary>
+    </member>
+    <member name="M:Yandex.Maps.Geocoding.GeocodeRequestParameters.#ctor(Yandex.Positioning.GeoCoordinate,System.Object)">
+      <summary>Initializes a new instance of the <see cref="T:Yandex.Maps.Geocoding.GeocodeRequestParameters" /> class</summary>
+    </member>
+    <member name="P:Yandex.Maps.Geocoding.GeocodeRequestParameters.GeoCoordinates"></member>
+    <member name="P:Yandex.Maps.Geocoding.GeocodeRequestParameters.State"></member>
+    <member name="T:Yandex.Maps.Geocoding.Dto.GeocodeObject"></member>
+    <member name="M:Yandex.Maps.Geocoding.Dto.GeocodeObject.#ctor">
+      <summary>Initializes a new instance of the <see cref="T:Yandex.Maps.Geocoding.Dto.GeocodeObject" /> class</summary>
+    </member>
+    <member name="P:Yandex.Maps.Geocoding.Dto.GeocodeObject.Coordinates"></member>
+    <member name="P:Yandex.Maps.Geocoding.Dto.GeocodeObject.Kind"></member>
+    <member name="P:Yandex.Maps.Geocoding.Dto.GeocodeObject.Ll"></member>
+    <member name="P:Yandex.Maps.Geocoding.Dto.GeocodeObject.Subtitle"></member>
+    <member name="P:Yandex.Maps.Geocoding.Dto.GeocodeObject.Title"></member>
+    <member name="P:Yandex.Maps.Geocoding.Dto.GeocodeObject.Zoomid"></member>
+    <member name="T:Yandex.Maps.Geocoding.Dto.GeocodeResult"></member>
+    <member name="M:Yandex.Maps.Geocoding.Dto.GeocodeResult.#ctor">
+      <summary>Initializes a new instance of the <see cref="T:Yandex.Maps.Geocoding.Dto.GeocodeResult" /> class</summary>
+    </member>
+    <member name="P:Yandex.Maps.Geocoding.Dto.GeocodeResult.Addresses"></member>
+    <member name="P:Yandex.Maps.Geocoding.Dto.GeocodeResult.Coordinates"></member>
+    <member name="T:Yandex.Maps.Geocoding.Interfaces.IGeocodeManager">
+      <summary>Represents the geocoding manager.
+            </summary>
+    </member>
+    <member name="E:Yandex.Maps.Geocoding.Interfaces.IGeocodeManager.GeocodeCompleted">
+      <summary>
+            Fires when geo suggest service returns result
+            </summary>
+    </member>
+    <member name="E:Yandex.Maps.Geocoding.Interfaces.IGeocodeManager.GeocodeFailed">
+      <summary>
+            Fires when geo suggest service fails
+            </summary>
+    </member>
+    <member name="M:Yandex.Maps.Geocoding.Interfaces.IGeocodeManager.Query(Yandex.Maps.Geocoding.GeocodeRequestParameters)">
+      <summary>
+            Sends a query to service server.
+            </summary>
+      <param name="request"></param>
+    </member>
+    <member name="T:Yandex.Maps.Helpers.GeocodeManagerProvider">
+      <summary>
+            Helper to get new instance of <see cref="T:Yandex.Maps.Geocoding.Interfaces.IGeocodeManager" /></summary>
+    </member>
+    <member name="M:Yandex.Maps.Helpers.GeocodeManagerProvider.GetGeocodeManager">
+      <summary>
+            Create new instance of <see cref="T:Yandex.Maps.Geocoding.Interfaces.IGeocodeManager" /></summary>
+    </member>
+    <member name="T:Yandex.Maps.Resources.ResourceWrapper"></member>
+    <member name="M:Yandex.Maps.Resources.ResourceWrapper.#ctor">
+      <summary>Initializes a new instance of the <see cref="T:Yandex.Maps.Resources.ResourceWrapper" /> class</summary>
+    </member>
+    <member name="P:Yandex.Maps.Resources.ResourceWrapper.AppResources"></member>
+    <member name="T:Yandex.Positioning.GeoCoordinate">
+      <summary>Geo coordinates.
+            </summary>
+    </member>
+    <member name="M:Yandex.Positioning.GeoCoordinate.#ctor">
+      <summary>Constructor.
+            </summary>
+    </member>
+    <member name="M:Yandex.Positioning.GeoCoordinate.#ctor(System.Double,System.Double)">
+      <summary>Initializes a new instance of the <see cref="T:Yandex.Positioning.GeoCoordinate" /> class</summary>
+      <param name="latitude">-90 to 90</param>
+      <param name="longitude">-180 to 180</param>
+    </member>
+    <member name="M:Yandex.Positioning.GeoCoordinate.#ctor(System.String,System.Boolean)">
+      <summary>Initializes a new instance of the <see cref="T:Yandex.Positioning.GeoCoordinate" /> class</summary>
+      <param name="value">Coordinates in format: "35.4562234, 64.231123"</param>
+      <param name="invert">true to invert coordinates order</param>
+    </member>
+    <member name="M:Yandex.Positioning.GeoCoordinate.Equals(System.Object)"></member>
+    <member name="M:Yandex.Positioning.GeoCoordinate.GetHashCode"></member>
+    <member name="P:Yandex.Positioning.GeoCoordinate.Latitude">
+      <summary>Latitude.
+            </summary>
+    </member>
+    <member name="P:Yandex.Positioning.GeoCoordinate.Longitude">
+      <summary>Longitude.
+            </summary>
+    </member>
+    <member name="M:Yandex.Positioning.GeoCoordinate.ToString"></member>
+    <member name="T:Yandex.WebUtils.Events.RequestCompletedEventArgs`2"></member>
+    <member name="M:Yandex.WebUtils.Events.RequestCompletedEventArgs`2.#ctor(`0,`1)">
+      <summary>Initializes a new instance of the <see cref="T:Yandex.WebUtils.Events.RequestCompletedEventArgs`2" /> class</summary>
+    </member>
+    <member name="M:Yandex.WebUtils.Events.RequestCompletedEventArgs`2.#ctor(`0,`1,Yandex.WebUtils.CacheValidators)">
+      <summary>Initializes a new instance of the <see cref="T:Yandex.WebUtils.Events.RequestCompletedEventArgs`2" /> class</summary>
+    </member>
+    <member name="P:Yandex.WebUtils.Events.RequestCompletedEventArgs`2.CacheValidators"></member>
+    <member name="P:Yandex.WebUtils.Events.RequestCompletedEventArgs`2.Parameters"></member>
+    <member name="P:Yandex.WebUtils.Events.RequestCompletedEventArgs`2.RequestResults"></member>
+    <member name="T:Yandex.WebUtils.Events.RequestCompletedEventHandler`2"></member>
+    <member name="T:Yandex.WebUtils.Events.RequestFailedEventArgs`1"></member>
+    <member name="M:Yandex.WebUtils.Events.RequestFailedEventArgs`1.#ctor(System.Exception)">
+      <summary>Initializes a new instance of the <see cref="T:Yandex.WebUtils.Events.RequestFailedEventArgs`1" /> class</summary>
+    </member>
+    <member name="M:Yandex.WebUtils.Events.RequestFailedEventArgs`1.#ctor(System.Exception,`0)">
+      <summary>Initializes a new instance of the <see cref="T:Yandex.WebUtils.Events.RequestFailedEventArgs`1" /> class</summary>
+    </member>
+    <member name="P:Yandex.WebUtils.Events.RequestFailedEventArgs`1.Exception"></member>
+    <member name="P:Yandex.WebUtils.Events.RequestFailedEventArgs`1.Parameters"></member>
+  </members>
+</doc>

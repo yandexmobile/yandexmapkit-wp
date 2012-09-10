@@ -55,7 +55,6 @@
 		        ZoomLevel="13"
 		        Center="53.905153, 27.558230"
                 DisplayLayers="map"
-                ApiKey="{StaticResource ApiKey}"
                 Grid.Row="2">
                 <ymc:MapLayer>
                     <ymc:MapPolyline Locations="{Binding Locations}"/>
