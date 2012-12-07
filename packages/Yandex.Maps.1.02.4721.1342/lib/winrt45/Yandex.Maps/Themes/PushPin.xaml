@@ -1,0 +1,182 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" 
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+                    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+                    xmlns:Maps="using:Yandex.Maps"
+                    mc:Ignorable="d">
+
+    <ControlTemplate x:Name="PushPinMarkerTemplate" TargetType="ContentControl" >
+        <Canvas x:Name="pushpin" Height="60" Width="46">
+            <!-- pushpin marker -->
+            <Path 
+                Height="60" 
+                Width="40"
+                Canvas.Left="8" 
+                Canvas.Top="2" 
+                Stroke="{TemplateBinding BorderBrush}" 
+                StrokeThickness="2"
+                Fill="{TemplateBinding Background}"
+                StrokeLineJoin="Round"
+                Data="F1 M20,1 C30.5,1 39,9.5 39,20 C39,21.142 38.8,22.35 38.65,23.5 C38.64,23.5 37.53333,30.15885 32.5,37.8 C27.208334,45.833332 16.333334,59.375 16.145834,58.979168 C16.095833,58.979168 14.954473,59.022892 13.7,59 C12.84375,58.984375 13,56.984375 13,56.984375 C13,56.984375 18.5,41 18.7,40.5 C18.953125,39.03125 19,38.74 19,38.74 C9.3,38.5 1,30 1,20 C1,9.5 9.5,1 20,1 z" />
+            <!-- pushpin marker content -->
+            <ContentPresenter
+                Canvas.Left="15.5" 
+                Canvas.Top="9.5" 
+                Width="25" 
+                Height="25" 
+                UseLayoutRounding="False"/>
+        </Canvas>
+    </ControlTemplate>
+
+    <DataTemplate x:Key="DefaultPushPinMarkerContentTemplate">
+        <Ellipse Width="25" Height="25" Stroke="White" StrokeThickness="6.5" />
+    </DataTemplate>
+
+    <Style TargetType="Maps:PushPinMarker">
+        <Setter Property="BorderBrush" Value="White"/>
+        <Setter Property="Background" Value="#FF0A70CE"/>
+        <Setter Property="Template" Value="{StaticResource PushPinMarkerTemplate}"/>
+        <Setter Property="ContentTemplate" Value="{StaticResource DefaultPushPinMarkerContentTemplate}"/>
+    </Style>
+
+    <Style TargetType="Maps:PushPin">
+        <Setter Property="Maps:MapLayer.Alignment" Value="BottomCenter" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="Maps:PushPin">
+                    <Grid x:Name="pushpinPanel">
+                        <VisualStateManager.VisualStateGroups>
+                            <VisualStateGroup x:Name="CheckStates">
+                                <VisualStateGroup.Transitions>
+                                    <VisualTransition GeneratedDuration="0"/>
+                                </VisualStateGroup.Transitions>
+                                <VisualState x:Name="Collapsed">
+                                    <Storyboard>
+                                        <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Visibility)" Storyboard.TargetName="org_circle">
+                                            <DiscreteObjectKeyFrame KeyTime="0">
+                                                <DiscreteObjectKeyFrame.Value>
+                                                    <Visibility>Visible</Visibility>
+                                                </DiscreteObjectKeyFrame.Value>
+                                            </DiscreteObjectKeyFrame>
+                                        </ObjectAnimationUsingKeyFrames>
+                                    </Storyboard>
+                                </VisualState>
+                                <VisualState x:Name="Expanded">
+                                    <Storyboard>
+                                        <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Visibility)" Storyboard.TargetName="ExpandedControl">
+                                            <DiscreteObjectKeyFrame KeyTime="0">
+                                                <DiscreteObjectKeyFrame.Value>
+                                                    <Visibility>Visible</Visibility>
+                                                </DiscreteObjectKeyFrame.Value>
+                                            </DiscreteObjectKeyFrame>
+                                        </ObjectAnimationUsingKeyFrames>
+                                    </Storyboard>
+                                </VisualState>
+                            </VisualStateGroup>
+                            <VisualStateGroup x:Name="BaloonStates">
+                                <VisualStateGroup.Transitions>
+                                    <VisualTransition GeneratedDuration="0"/>
+                                </VisualStateGroup.Transitions>
+                                <VisualState x:Name="BaloonVisible">
+                                    <Storyboard>
+                                        <DoubleAnimation Duration="0" To="0" Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="ExpandedControl"/>
+                                        <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Visibility)" Storyboard.TargetName="border">
+                                            <DiscreteObjectKeyFrame KeyTime="0">
+                                                <DiscreteObjectKeyFrame.Value>
+                                                    <Visibility>Visible</Visibility>
+                                                </DiscreteObjectKeyFrame.Value>
+                                            </DiscreteObjectKeyFrame>
+                                        </ObjectAnimationUsingKeyFrames>
+                                        <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Visibility)" Storyboard.TargetName="pushpin_tail_background">
+                                            <DiscreteObjectKeyFrame KeyTime="0">
+                                                <DiscreteObjectKeyFrame.Value>
+                                                    <Visibility>Visible</Visibility>
+                                                </DiscreteObjectKeyFrame.Value>
+                                            </DiscreteObjectKeyFrame>
+                                        </ObjectAnimationUsingKeyFrames>
+                                        <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Visibility)" Storyboard.TargetName="pushpin_tail_background2">
+                                            <DiscreteObjectKeyFrame KeyTime="0">
+                                                <DiscreteObjectKeyFrame.Value>
+                                                    <Visibility>Visible</Visibility>
+                                                </DiscreteObjectKeyFrame.Value>
+                                            </DiscreteObjectKeyFrame>
+                                        </ObjectAnimationUsingKeyFrames>
+                                    </Storyboard>
+                                </VisualState>
+                                <VisualState x:Name="BaloonCollapsed"/>
+                            </VisualStateGroup>
+                        </VisualStateManager.VisualStateGroups>
+                        <!-- circle -->
+                        <Border 
+                            x:Name="org_circle" 
+                            Padding="6" 
+                            HorizontalAlignment="Center" 
+                            VerticalAlignment="Bottom" 
+                            Margin="0,0,0,-15" 
+                            Background="Transparent" 
+                            Visibility="Collapsed" 
+                            Width="30" 
+                            Height="30">
+                            <Ellipse Fill="{TemplateBinding Background}" Stroke="{TemplateBinding BorderBrush}" StrokeThickness="2" Width="18" Height="18"/>
+                        </Border>
+                        <!-- expanded marker -->
+                        <Maps:PushPinMarker
+                            x:Name="ExpandedControl"
+                            Background="{TemplateBinding Background}"
+                            BorderBrush="{TemplateBinding BorderBrush}"
+                            ContentTemplate="{TemplateBinding ExpandedMarkerContentTemplate}"
+                            Visibility="Collapsed">
+                        </Maps:PushPinMarker>
+                        <!-- balloon -->
+                        <Border 
+                            x:Name="border" 
+                            BorderBrush="{TemplateBinding BorderBrush}" 
+                            BorderThickness="2" 
+                            Background="{TemplateBinding Background}" 
+                            VerticalAlignment="Bottom" 
+                            Margin="0,0,0,18" 
+                            Visibility="Collapsed">
+                            <ContentPresenter
+                                x:Name="contentControl" 
+                                Content="{TemplateBinding Content}"
+                                ContentTemplate="{TemplateBinding ContentTemplate}"
+                    			HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
+                    			Margin="{TemplateBinding Padding}"> 
+                            </ContentPresenter>
+                        </Border>
+                        <Path 
+                            x:Name="pushpin_tail_background2" 
+                        	Data="M0,0 H40"
+                        	Width="16" 
+                            VerticalAlignment="Bottom" 
+                            HorizontalAlignment="Center" 
+                            Stroke="{TemplateBinding Background}" 
+                            StrokeThickness="2" 
+                            Margin="22,0,0,18" 
+                            Stretch="Fill" 
+                            Visibility="Collapsed"/>
+
+                        <Path x:Name="pushpin_tail_background"
+                            Data="M4,2 C4,2 6,2 7,2 C7,2 6.9642954,2.03125 6.7111712,3.5 C6.5111704,4 1.0111704,19.984375 1.0111704,19.984375 C1.0111704,19.984375 0.85492039,21.984375 1.7111702,22 C2.9656429,22.022892 4.1070032,21.979168 4.1570044,21.979168 C4.338645,22.362629 14.278381,10.098222 19.727345,2.0008142 L22.039547,2.0007789" 
+                            Fill="{TemplateBinding Background}" 
+                            Height="23" 
+                            VerticalAlignment="Bottom" 
+                            HorizontalAlignment="Center"
+                            Margin="17,0,0,-2"
+                            Stroke="{TemplateBinding BorderBrush}" 
+                            StrokeThickness="2" 
+                            StrokeLineJoin="Round"
+                            Visibility="Collapsed"
+                            Width="23"/>
+                    </Grid>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+        <Setter Property="BorderBrush" Value="White"/>
+        <Setter Property="Background" Value="#FF0A70CE"/>
+        <Setter Property="Foreground" Value="White"/>
+        <Setter Property="Padding" Value="6"/>
+        <Setter Property="ExpandedMarkerContentTemplate" Value="{StaticResource DefaultPushPinMarkerContentTemplate}"/>
+    </Style>
+</ResourceDictionary>

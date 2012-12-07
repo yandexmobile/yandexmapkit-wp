@@ -1,0 +1,48 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" 
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+                    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+                    xmlns:Maps="using:Yandex.Maps" 
+                    mc:Ignorable="d">
+
+    <Style TargetType="Maps:PositionAccuracyControl">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="Maps:PositionAccuracyControl">
+                    <Grid x:Name="LayoutRoot" RenderTransformOrigin="0.5,0.5">
+                        <Grid.Resources>
+                            <Storyboard x:Name="AccuracyStoryboard">
+                                <DoubleAnimation x:Name="ScaleXAnimation" Duration="0:0:0.2" Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.ScaleX)" Storyboard.TargetName="PositionEllipse" d:IsOptimized="True"/>
+                                <DoubleAnimation x:Name="ScaleYAnimation" Duration="0:0:0.2" Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.ScaleY)" Storyboard.TargetName="PositionEllipse" d:IsOptimized="True"/>
+                            </Storyboard>
+                        </Grid.Resources>
+                        <Grid.RenderTransform>
+                            <CompositeTransform/>
+                        </Grid.RenderTransform>
+                        <VisualStateManager.VisualStateGroups>
+                            <VisualStateGroup x:Name="AccuracyEllipseStates">
+                                <VisualState x:Name="EllipseHidden"/>
+                                <VisualState x:Name="EllipseVisible">
+                                    <Storyboard>
+                                        <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Visibility)" Storyboard.TargetName="PositionEllipse">
+                                            <DiscreteObjectKeyFrame KeyTime="0">
+                                                <DiscreteObjectKeyFrame.Value>
+                                                    <Visibility>Visible</Visibility>
+                                                </DiscreteObjectKeyFrame.Value>
+                                            </DiscreteObjectKeyFrame>
+                                        </ObjectAnimationUsingKeyFrames>
+                                    </Storyboard>
+                                </VisualState>
+                            </VisualStateGroup>
+                        </VisualStateManager.VisualStateGroups>
+                        <Ellipse Visibility="Collapsed" x:Name="PositionEllipse"  Stroke="#66000000" HorizontalAlignment="Center" VerticalAlignment="Center" Fill="#14000000" Width="100" Height="100" RenderTransformOrigin="0.5,0.5" CacheMode="BitmapCache">
+                            <Ellipse.RenderTransform>
+                                <CompositeTransform/>
+                            </Ellipse.RenderTransform>
+                        </Ellipse>
+                    </Grid>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+</ResourceDictionary>

@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2012/06/nuspec.xsd">
+  <metadata>
+    <id>Yandex.Maps</id>
+    <version>1.02.4721.1342</version>
+    <title>Yandex.Maps MapKit</title>
+    <authors>Yandex</authors>
+    <owners>Yandex</owners>
+    <licenseUrl>http://legal.yandex.ru/mapkit/</licenseUrl>
+    <projectUrl>http://api.yandex.ru/mapkit/</projectUrl>
+    <requireLicenseAcceptance>true</requireLicenseAcceptance>
+    <description>Yandex Maps control. See samples at https://github.com/yandexmobile/yandexmapkit-wp.</description>
+    <tags>windowsphone wp7 wp7dev phone controls mango mapkit yandex maps</tags>
+    <dependencies>
+      <group targetFramework=".NETCore4.5">
+        <dependency id="Rx-Main" version="2.0.20823" />
+      </group>
+      <group targetFramework="Silverlight4.0-WindowsPhone71">
+        <dependency id="Rx-Main" version="2.0.20823" />
+        <dependency id="Rx-Silverlight" version="2.0.20823" />
+      </group>
+    </dependencies>
+  </metadata>
+</package>
