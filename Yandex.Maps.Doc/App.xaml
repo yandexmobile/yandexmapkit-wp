@@ -3,11 +3,12 @@
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"       
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:shell="clr-namespace:Microsoft.Phone.Shell;assembly=Microsoft.Phone"
-    xmlns:Maps="clr-namespace:Yandex.Maps;assembly=Yandex.Maps">
+    xmlns:maps="clr-namespace:Yandex.Maps;assembly=Yandex.Maps">
 
     <!--Application Resources-->
     <Application.Resources>
-        <Maps:MapGlobalSettings x:Key="MapGlobalSettings" ApiKey="Your API key here" />
+        <!-- specify your ApiKey here-->
+        <maps:MapGlobalSettings x:Key="MapGlobalSettings" ApiKey="1234567890" />
     </Application.Resources>
 
     <Application.ApplicationLifetimeObjects>
