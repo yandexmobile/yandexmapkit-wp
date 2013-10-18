@@ -1,0 +1,22 @@
+﻿<Page
+    x:Class="Yandex.Maps.Doc.WinRT.MainPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:Maps="using:Yandex.Maps"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:positioning="using:Yandex.Positioning"
+    mc:Ignorable="d">
+
+    <Grid Background="{StaticResource ApplicationPageBackgroundThemeBrush}">
+        <Maps:Map
+            ZoomLevel="13"
+            DisplayLayers="map"
+            TrafficEnabled="True"
+            UseLocation="True">
+            <Maps:Map.Center>
+                <positioning:GeoCoordinate Latitude="53.905153" Longitude="27.558230" />
+            </Maps:Map.Center>
+        </Maps:Map>        
+    </Grid>
+</Page>
