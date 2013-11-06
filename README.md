@@ -17,18 +17,14 @@ http://nuget.org/packages/Yandex.Maps
 
 
 
-� ���� ����������� ��������� �������� ����������, ��������������� ����������� Yandex MapKit ��� Windows Phone
-
-��� ������ ������ � �������� ��������
+Как начать работу с тестовым проектом
 ------------
-1. ���������� ����������� ������� git clone https://github.com/yandexmobile/yandexmapkit-wp.git 
-2. ���������� ���� API ���� � ���� App.xaml
-3. ��� ������ � ������� ��������� �������
+1. Клонируйте репозиторий примера git clone https://github.com/yandexmobile/yandexmapkit-wp.git
+2. Подставьте свой API ключ в файл App.xaml
+3. Всё готово к запуску тестового проекта
 
-�������������� ����������
+Дополнительная информация
 ------------
-���� �� ������ �������� �� ������ ��� ���������� ���� � ��������, �� �������� �� ����, ����������, � [Issues](https://github.com/yandexmobile/yandexmapkit-wp/issues).
+Если вы хотите сообщить об ошибке или предложить идею в развитии, то напишите об этом, пожалуйста, в [Issues](https://github.com/yandexmobile/yandexmapkit-wp/issues).
 
-
-������ �������� ��� ����� NuGet:
-http://nuget.org/packages/Yandex.Maps
+Мапкит доступен как пакет NuGet: http://nuget.org/packages/Yandex.Maps
